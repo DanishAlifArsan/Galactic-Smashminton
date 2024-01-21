@@ -10,15 +10,9 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         var (center, size) = CalculateOrthoSize();
         cam.transform.position = center;
-        cam.orthographicSize = size;
+        cam.orthographicSize = size;   
     }
 
     private (Vector3 center, float size) CalculateOrthoSize() {
