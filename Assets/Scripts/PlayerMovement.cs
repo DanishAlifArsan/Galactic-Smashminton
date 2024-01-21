@@ -6,12 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float swingPower;
     [SerializeField] private BoxCollider2D col;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform racket;
-    [SerializeField] private float swingCooldown;
-    float swingTimer = 0;
     Rigidbody2D rb;
     bool isSwing = false;
     // Start is called before the first frame update
@@ -20,23 +16,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isSwing)
-        {
-            swingTimer += Time.deltaTime;
-            racket.RotateAround(col.transform.position, new Vector3(0,0,1), swingPower * Time.deltaTime);
-            if (swingTimer >= swingCooldown)
-            {
-                swingTimer = 0;
-                isSwing = false;
-            }
-        }
-    }
-
     public void Move(float _direction) {
-        // transform.Translate(new Vector2(speed * _direction, transform.position.y));
         rb.velocity = new Vector2(speed * _direction, rb.velocity.y);
     }
 
