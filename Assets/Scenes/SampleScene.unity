@@ -165,7 +165,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 13540651}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e1310b3a42e566f439f22fa0cdfa1079, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2070,7 +2070,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 894577057}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: e1310b3a42e566f439f22fa0cdfa1079, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2709,9 +2709,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7656c239f5118444caa013e5f256b04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
   enemy: {fileID: 11400000, guid: 8bb680433ee0c4c4ba8f1a7af7a2c005, type: 2}
   enemySight: 4
+  enemyJumpSight: 3
   ball: {fileID: 546880280}
+  swingTarget: {fileID: 1441065762}
+  movement: {fileID: 0}
+  swing: {fileID: 0}
 --- !u!1 &1441065760
 GameObject:
   m_ObjectHideFlags: 0

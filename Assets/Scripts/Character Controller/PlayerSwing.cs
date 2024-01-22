@@ -32,7 +32,7 @@ public class PlayerSwing : MonoBehaviour
         }
     }
 
-    private Collider2D CheckBall() {
+    public Collider2D CheckBall() {
         Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange, ballLayer);
         return ball;
     }

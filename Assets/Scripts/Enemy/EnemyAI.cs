@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    // public StateManager stateManager;
-    [SerializeField] private PlayableCharacter enemy;
+    public StateManager stateManager;
+    public PlayableCharacter enemy;
     [SerializeField] private float enemySight;
-    [SerializeField] private Transform ball;
-    PlayerMovement movement;
-    PlayerSwing swing;
-    private bool isSwing;
-    float swingTimer = Mathf.Infinity;
+    public float enemyJumpSight;
+    public Transform ball;
+    public Transform swingTarget;
+    public PlayerMovement movement;
+    public PlayerSwing swing;
 
     // Start is called before the first frame update
     void Start()
@@ -20,21 +20,17 @@ public class EnemyAI : MonoBehaviour
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
 
-        // stateManager = new StateManager();
-        // stateManager.StartState(this);
+        stateManager = new StateManager();
+        stateManager.StartState(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (BallInSight())
-        {
-            movement.Move(enemy.speed, Mathf.Sign(ball.position.x - transform.position.x));
-            Debug.Log("in sight");
-        }
+        stateManager.currentState.UpdateState(this, stateManager);
     }
 
     public bool BallInSight() {
-        return Mathf.Abs(ball.position.x - transform.position.x) < enemySight;
+        return Mathf.Abs(ball.position.x - transform.position.x) < enemySight || ball.position.x > transform.position.x;
     }
 }
