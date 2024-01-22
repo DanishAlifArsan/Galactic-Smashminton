@@ -12,12 +12,12 @@ public class PlayerSwing : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Swing(float swingPower) {
+    public void Swing(float swingPower, Vector2 fromPosition, Vector2 targetPosition) {
         if (CheckBall() != null)
         {    
             Rigidbody2D ballRb = CheckBall().GetComponent<Rigidbody2D>();
-            float v_x = 0/swingPower;
-            float v_y = 0/swingPower + 4.9f * swingPower;
+            float v_x = (targetPosition.x - fromPosition.x)/swingPower;
+            float v_y = (targetPosition.y - fromPosition.y)/swingPower + 4.9f * swingPower;
 
             ballRb.velocity = new Vector2(v_x, v_y);
 

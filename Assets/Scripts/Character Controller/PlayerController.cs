@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayableCharacter player;
+    [SerializeField] Transform target;
     PlayerMovement movement;
     PlayerSwing swing;
     private bool isSwing;
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
             swingTimer = 0;
             isSwing = true;
             
-            swing.Swing(player.swingPower);
+            swing.Swing(player.swingPower, transform.position, target.position);
         }
     }
 
