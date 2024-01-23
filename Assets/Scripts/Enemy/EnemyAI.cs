@@ -12,11 +12,12 @@ public class EnemyAI : MonoBehaviour
     public Transform swingTarget;
     public PlayerMovement movement;
     public PlayerSwing swing;
+    public GameObject obj;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj = Instantiate(enemy.prefab, transform);
+        obj = Instantiate(enemy.prefab, transform);
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
 
@@ -31,6 +32,6 @@ public class EnemyAI : MonoBehaviour
     }
 
     public bool BallInSight() {
-        return Mathf.Abs(ball.position.x - transform.position.x) < enemySight || ball.position.x > transform.position.x;
+        return Mathf.Abs(ball.position.x - transform.position.x) < enemySight || ball.position.x > obj.transform.position.x;
     }
 }

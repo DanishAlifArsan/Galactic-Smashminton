@@ -6,7 +6,11 @@ public class EnemySwingState : IState
 {
     public void EnterState(EnemyAI enemy, StateManager stateManager)
     {
-        enemy.swing.Swing(enemy.enemy.swingPower, enemy.transform.position, enemy.swingTarget.position);
+        // if (Random.Range(1,10) != 1)
+        // {
+
+        // }
+            enemy.swing.Swing(enemy.enemy.swingPower, enemy.transform.position, enemy.swingTarget.position);
     }
 
     public void UpdateState(EnemyAI enemy, StateManager stateManager)
