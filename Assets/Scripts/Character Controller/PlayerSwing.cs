@@ -7,37 +7,52 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private float[] swingRange;
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private Transform playerChest;
+    [SerializeField] private Transform smashPoint;
     private Animator anim;
     private void Start() {
         anim = GetComponent<Animator>();
     }
 
-    public void Swing(float swingPower, Vector2 fromPosition, Vector2 targetPosition) {
+    public void Swing(float swingPower, Vector2 targetPosition, bool isJump) {
         if (CheckBall() != null && MissedBall())
         {    
             Rigidbody2D ballRb = CheckBall().GetComponent<Rigidbody2D>();
-            // float v_x = (targetPosition.x - fromPosition.x)/swingPower;
-            // float v_y = (targetPosition.y - fromPosition.y)/swingPower + 4.9f * swingPower;
-            
-            float angle = 0;
-            if (ballRb.transform.position.y > playerChest.position.y)
+            float v_x, v_y;
+
+            if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
             {
-                anim.SetTrigger("UpperSwing");
-                angle = 30;
+                float[] swingVelocity = Smash(swingPower * 2, ballRb);
+                v_x = swingVelocity[0];
+                v_y = swingVelocity[1];
             } else {
-                anim.SetTrigger("DownSwing");
-                angle = 60;
+                float[] swingVelocity = Hit(swingPower, ballRb);
+                v_x = swingVelocity[0];
+                v_y = swingVelocity[1];
             }
-
-            float v_x = swingPower * Mathf.Cos(Mathf.Deg2Rad * angle);
-            float v_y = swingPower * Mathf.Sin(Mathf.Deg2Rad * angle);
-
             ballRb.velocity = new Vector2(CalculateXVelocity(targetPosition, v_x), v_y);
-            // Debug.Log(CalculateAngle(targetPosition, angle));
 
         } else {
             anim.SetTrigger("UpperSwing");
         }
+    }
+
+    public float[] Hit(float swingPower, Rigidbody2D ballRb) {
+        float angle;
+        if (ballRb.transform.position.y > playerChest.position.y)
+        {
+            anim.SetTrigger("UpperSwing");
+            angle = 30;
+        } else {
+            anim.SetTrigger("DownSwing");
+            angle = 60;
+        }
+
+        return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * angle), swingPower * Mathf.Sin(Mathf.Deg2Rad * angle)};
+    }
+
+    public float[] Smash(float smashPower, Rigidbody2D ballRb) {
+        // anim.SetTrigger("Smash");
+        return new float[] {smashPower * Mathf.Cos(Mathf.Deg2Rad * 300), ballRb.velocity.y};
     }
 
     public Collider2D CheckBall() {

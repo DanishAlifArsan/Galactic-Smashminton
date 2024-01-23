@@ -10,7 +10,7 @@ public class EnemySwingState : IState
         // {
 
         // }
-            enemy.swing.Swing(enemy.enemy.swingPower, enemy.transform.position, enemy.swingTarget.position);
+            enemy.swing.Swing(enemy.enemy.swingPower, enemy.swingTarget.position, enemy.isJump);
     }
 
     public void UpdateState(EnemyAI enemy, StateManager stateManager)

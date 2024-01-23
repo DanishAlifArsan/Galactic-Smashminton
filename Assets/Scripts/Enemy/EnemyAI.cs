@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     public PlayerMovement movement;
     public PlayerSwing swing;
     public GameObject obj;
+    public bool isJump;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         stateManager.currentState.UpdateState(this, stateManager);
+        isJump = !movement.isGrounded();
     }
 
     public bool BallInSight() {

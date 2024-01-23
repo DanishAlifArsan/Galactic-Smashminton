@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             swingTimer = 0;
             isSwing = true;
             
-            swing.Swing(player.swingPower, transform.position, target.position);
+            swing.Swing(player.swingPower, target.position, !movement.isGrounded());
         }
     }
 

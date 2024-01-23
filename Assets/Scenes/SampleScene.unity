@@ -1210,7 +1210,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &546880278
 CircleCollider2D:
@@ -1308,7 +1308,7 @@ Transform:
   m_GameObject: {fileID: 546880276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.34, y: 3.32, z: 0}
+  m_LocalPosition: {x: -3.99, y: 0.54, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2717,6 +2717,8 @@ MonoBehaviour:
   swingTarget: {fileID: 1441065762}
   movement: {fileID: 0}
   swing: {fileID: 0}
+  obj: {fileID: 0}
+  isJump: 0
 --- !u!1 &1441065760
 GameObject:
   m_ObjectHideFlags: 0
