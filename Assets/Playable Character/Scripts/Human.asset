@@ -16,4 +16,4 @@ MonoBehaviour:
   speed: 2
   jumpForce: 5
   swingCooldown: 0.5
-  swingPower: 5
+  swingPower: 10
