@@ -16,11 +16,4 @@ MonoBehaviour:
   speed: 2
   jumpForce: 5
   swingCooldown: 0.5
-  swingPower: 2
-  swingRange: 2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  ballLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  swingPower: 10

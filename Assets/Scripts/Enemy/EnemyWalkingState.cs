@@ -21,7 +21,7 @@ public class EnemyWalkingState : IState
         stateManager.SwitchState(enemy, stateManager.enemyIdle);
        }
 
-       if (enemy.swing.CheckBall() != null)
+       if (enemy.swing.CheckBall() != null && enemy.swing.MissedBall())
        {
         stateManager.SwitchState(enemy, stateManager.enemySwing);
        }
