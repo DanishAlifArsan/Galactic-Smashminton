@@ -14,12 +14,24 @@ public class PlayerSwing : MonoBehaviour
     }
 
     public void Swing(float swingPower, Vector2 targetPosition, bool isJump) {
+        if (GameManager.instance.currentGamePhase == GamePhase.End)
+        {
+            return;
+        }
+
         if (CheckBall() != null && MissedBall())
         {    
             Rigidbody2D ballRb = CheckBall().GetComponent<Rigidbody2D>();
             float v_x, v_y;
+            if (GameManager.instance.currentGamePhase == GamePhase.Serve)
+            {
+                GameManager.instance.currentGamePhase = GamePhase.Play;
+                float[] swingVelocity = Service(swingPower, ballRb);
+                v_x = swingVelocity[0];
+                v_y = swingVelocity[1];
 
-            if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
+            }
+            else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
             {
                 float[] swingVelocity = Smash(swingPower * 2, ballRb);
                 v_x = swingVelocity[0];
@@ -54,6 +66,11 @@ public class PlayerSwing : MonoBehaviour
         // anim.SetTrigger("Smash");
         return new float[] {smashPower * Mathf.Cos(Mathf.Deg2Rad * 300), ballRb.velocity.y};
     }
+
+    public float[] Service (float swingPower, Rigidbody2D ballRb) {
+        // anim.SetTrigger("Service");
+        return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * 60), swingPower * Mathf.Sin(Mathf.Deg2Rad * 60)};
+    }   
 
     public Collider2D CheckBall() {
         Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange[1], ballLayer);

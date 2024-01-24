@@ -8,7 +8,6 @@ public class EnemySwingState : IState
     {
         // if (Random.Range(1,10) != 1)
         // {
-
         // }
             enemy.swing.Swing(enemy.enemy.swingPower, enemy.swingTarget.position, enemy.isJump);
     }

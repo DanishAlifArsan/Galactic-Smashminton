@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,7 @@ public class StateManager : MonoBehaviour
     public EnemyWalkingState enemyWalk = new EnemyWalkingState();
     public EnemyJumpState enemyJump = new EnemyJumpState();
     public EnemySwingState enemySwing = new EnemySwingState();
+    // public EnemyServeState enemyServe = new EnemyServeState();
     
     // Start is called before the first frame update
     public void StartState(EnemyAI enemy)
@@ -21,5 +23,13 @@ public class StateManager : MonoBehaviour
     public void SwitchState(EnemyAI enemy, IState state) {
         currentState = state;
         state.EnterState(enemy, this);
+    }
+
+    public void SwitchAnyState(EnemyAI enemy, IState state, Func<bool> condition) {
+        if (condition() && currentState != state)
+        {
+            currentState = state;
+            state.EnterState(enemy, this);
+        }
     }
 }
