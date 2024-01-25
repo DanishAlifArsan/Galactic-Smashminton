@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerScoreText, EnemyScoreText;
     [SerializeField] BallController ball;
     [SerializeField] int maxScore;
+    [SerializeField] GameObject gameoverScreen;
+    [SerializeField] TextMeshProUGUI gameoverText;
 
     private int playerScore, enemyScore;
 
@@ -20,7 +22,10 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.instance.currentGamePhase == GamePhase.End)
+        {
+            StartCoroutine(GameOver());
+        }
     }
 
     private void Score(object sender, BallController.OnCollideFieldArgs args) {
@@ -40,6 +45,17 @@ public class ScoreManager : MonoBehaviour
             GameManager.instance.currentGamePhase = GamePhase.End;
         } else {
             GameManager.instance.currentGamePhase = GamePhase.Serve;
+        }
+    }
+
+    private IEnumerator GameOver() {
+        yield return new WaitForSeconds(1);
+        gameoverScreen.SetActive(true);
+        if (playerScore > enemyScore)
+        {
+            gameoverText.text = "You Win!";    
+        } else {
+            gameoverText.text = "You Lose!";
         }
     }
 }
