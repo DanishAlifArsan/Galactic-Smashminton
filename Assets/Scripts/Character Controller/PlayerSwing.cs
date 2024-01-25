@@ -64,7 +64,7 @@ public class PlayerSwing : MonoBehaviour
 
     public float[] Smash(float smashPower, Rigidbody2D ballRb) {
         // anim.SetTrigger("Smash");
-        return new float[] {smashPower * Mathf.Cos(Mathf.Deg2Rad * 300), ballRb.velocity.y};
+        return new float[] {smashPower * Mathf.Cos(Mathf.Deg2Rad * 0), ballRb.velocity.y};
     }
 
     public float[] Service (float swingPower, Rigidbody2D ballRb) {

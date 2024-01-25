@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     {
         stateManager.currentState.UpdateState(this, stateManager);
         isJump = !movement.isGrounded();
-        // stateManager.SwitchAnyState(this, stateManager.enemyServe, () => GameManager.instance.currentGamePhase == GamePhase.Serve);
+        stateManager.SwitchAnyState(this, stateManager.enemyServe, () => GameManager.instance.currentGamePhase == GamePhase.Serve);
     }
 
     public bool BallInSight() {

@@ -11,7 +11,10 @@ public class EnemyJumpState : IState
 
     public void UpdateState(EnemyAI enemy, StateManager stateManager)
     {
-        enemy.movement.Jump(enemy.enemy.jumpForce);
+        if (Random.Range(1,10) > 5)
+        {
+            enemy.movement.Jump(enemy.enemy.jumpForce);
+        }
 
         if (enemy.swing.CheckBall() != null && enemy.swing.MissedBall())
        {

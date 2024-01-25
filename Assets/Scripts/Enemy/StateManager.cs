@@ -11,12 +11,13 @@ public class StateManager : MonoBehaviour
     public EnemyWalkingState enemyWalk = new EnemyWalkingState();
     public EnemyJumpState enemyJump = new EnemyJumpState();
     public EnemySwingState enemySwing = new EnemySwingState();
-    // public EnemyServeState enemyServe = new EnemyServeState();
+    public EnemyServeState enemyServe = new EnemyServeState();
     
     // Start is called before the first frame update
     public void StartState(EnemyAI enemy)
     {
-        currentState = enemyIdle;
+        // currentState = enemyIdle;
+        currentState = enemyServe;
         currentState.EnterState(enemy, this);
     }
 

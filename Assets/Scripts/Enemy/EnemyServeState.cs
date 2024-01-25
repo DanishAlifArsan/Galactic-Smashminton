@@ -14,11 +14,15 @@ public class EnemyServeState : IState
 
     public void UpdateState(EnemyAI enemy, StateManager stateManager)
     {
-        
+        if (enemy.swing.CheckBall() == null)
+        {
+            stateManager.SwitchState(enemy, stateManager.enemyIdle);
+        }
     }
 
     private IEnumerator Serve(EnemyAI enemy, StateManager stateManager) {
         yield return new WaitForSeconds(1);
-        stateManager.SwitchState(enemy, stateManager.enemySwing);
+        // stateManager.SwitchState(enemy, stateManager.enemySwing);
+        enemy.swing.Swing(enemy.enemy.swingPower, enemy.swingTarget.position, false);
     }
 }

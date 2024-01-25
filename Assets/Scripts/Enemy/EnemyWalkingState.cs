@@ -10,7 +10,7 @@ public class EnemyWalkingState : IState
     public void UpdateState(EnemyAI enemy, StateManager stateManager)
     {
        enemy.movement.Move(enemy.enemy.speed, Mathf.Sign(enemy.ball.position.x - enemy.obj.transform.position.x));
-       if (Mathf.Abs(enemy.ball.position.x - enemy.obj.transform.position.x) < 1 && 
+       if (Mathf.Abs(enemy.ball.position.x - enemy.obj.transform.position.x) < .1f && 
         enemy.ball.position.y - enemy.obj.transform.position.y < enemy.enemyJumpSight)
        {
         stateManager.SwitchState(enemy, stateManager.enemyJump);
