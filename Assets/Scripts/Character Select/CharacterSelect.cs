@@ -10,24 +10,17 @@ public class CharacterSelect : MonoBehaviour
     public static CharacterSelect instance;
 
     private void Awake() {
-        if (instance == null)
+        if (instance == null) {
+            //First run, set the instance
             instance = this;
-        else if (instance != this)
-            Destroy(this.gameObject);
-
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+            DontDestroyOnLoad(gameObject);
+ 
+        } else if (instance != this) {
+            //Instance is not the same as the one we have, destroy old one, and reset to newest one
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void SelectCharacter(int characterIndex) {
