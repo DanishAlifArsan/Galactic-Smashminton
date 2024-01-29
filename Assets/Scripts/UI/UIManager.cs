@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private void Update() {
         if (!inGame)
         {
+            Time.timeScale = 1;
             return;
         }
 
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     public void Continue() {
         pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Exit() {
