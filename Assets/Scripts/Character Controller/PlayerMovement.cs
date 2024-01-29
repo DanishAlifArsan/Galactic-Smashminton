@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();

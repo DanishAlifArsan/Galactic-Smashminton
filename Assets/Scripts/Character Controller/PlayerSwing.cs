@@ -9,7 +9,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private Transform playerChest;
     [SerializeField] private Transform smashPoint;
     private Animator anim;
-    private void Start() {
+    private void Awake() {
         anim = GetComponent<Animator>();
     }
 

@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemy = CharacterSelect.instance.selectedCharacter;
         obj = Instantiate(enemy.prefab, transform);
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
