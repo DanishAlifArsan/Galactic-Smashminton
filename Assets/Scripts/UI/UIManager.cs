@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,15 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject fadeScreen;
     public bool inGame;
+    Animator fadeAnim;
+    FadeScreen fadeScene;
+
+    private void Start() {
+        fadeAnim = fadeScreen.GetComponent<Animator>(); 
+        fadeScene = fadeScreen.GetComponent<FadeScreen>();
+    }
 
     private void Update() {
         if (!inGame)
@@ -24,7 +33,9 @@ public class UIManager : MonoBehaviour
     }
 
     public void SwitchScene(int scene) {
-        SceneManager.LoadScene(scene);
+        fadeScene.scene = scene;
+        fadeAnim.SetTrigger("Fade");
+        // SceneManager.LoadScene(scene);
     }
 
     public void Continue() {
