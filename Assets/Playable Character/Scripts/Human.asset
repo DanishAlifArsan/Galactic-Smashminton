@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4305002738686732368, guid: fbbfbbd2264029042a1fea04e34c441c, type: 3}
   speed: 2
-  jumpForce: 5
+  jumpForce: 6
   swingCooldown: 0.5
   swingPower: 10
