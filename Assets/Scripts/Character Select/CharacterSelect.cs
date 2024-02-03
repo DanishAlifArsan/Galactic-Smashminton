@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 public class CharacterSelect : MonoBehaviour
 {
     [SerializeField] private PlayableCharacter[] characters;
-    [SerializeField] private GameObject fadeScreen;
+    [SerializeField] private UIManager uIManager;
     public PlayableCharacter selectedCharacter {get; private set;}
     public static CharacterSelect instance;
-    Animator fadeAnim;
-    FadeScreen fadeScene;
 
     private void Awake() {
         if (instance == null) {
@@ -26,15 +24,8 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
-    private void Start() {
-        fadeAnim = fadeScreen.GetComponent<Animator>(); 
-        fadeScene = fadeScreen.GetComponent<FadeScreen>();
-    }
-
     public void SelectCharacter(int characterIndex) {
         selectedCharacter = characters[characterIndex];
-        fadeScene.scene = 2;
-        fadeAnim.SetTrigger("Fade");
-        // SceneManager.LoadScene(2);
+        uIManager.SwitchScene(2);
     }
 }

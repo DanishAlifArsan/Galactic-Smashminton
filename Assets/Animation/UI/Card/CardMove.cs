@@ -5,17 +5,14 @@ using UnityEngine.UI;
 
 public class CardMove : MonoBehaviour
 {
-    [SerializeField] private Button[] buttons;
+    [SerializeField] private UIManager uIManager;
     bool isMoved;
     
     // Start is called before the first frame update
     void OnEnable()
     {
         isMoved = false;
-        foreach (var item in buttons)
-        {
-            item.interactable = false;
-        }
+        uIManager.InteractButton(false);
     }
 
     // Update is called once per frame
@@ -27,10 +24,7 @@ public class CardMove : MonoBehaviour
             if (transform.position.x <= 0)
             {
                 isMoved = true;
-                foreach (var item in buttons)
-                {
-                item.interactable = true;
-                }
+                uIManager.InteractButton(true);
             }
         }
 

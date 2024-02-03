@@ -4,11 +4,13 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject fadeScreen;
+    [SerializeField] private Button[] buttons;
     public bool inGame;
     Animator fadeAnim;
     FadeScreen fadeScene;
@@ -16,6 +18,7 @@ public class UIManager : MonoBehaviour
     private void Start() {
         fadeAnim = fadeScreen.GetComponent<Animator>(); 
         fadeScene = fadeScreen.GetComponent<FadeScreen>();
+        InteractButton(true);
     }
 
     private void Update() {
@@ -32,10 +35,11 @@ public class UIManager : MonoBehaviour
         }    
     }
 
-    public void SwitchScene(int scene) {
+    public void SwitchScene(int scene) 
+    {
+        InteractButton(false);    
         fadeScene.scene = scene;
         fadeAnim.SetTrigger("Fade");
-        // SceneManager.LoadScene(scene);
     }
 
     public void Continue() {
@@ -45,5 +49,12 @@ public class UIManager : MonoBehaviour
 
     public void Exit() {
         Application.Quit();
+    }
+
+    public void InteractButton(bool status) {
+        foreach (var item in buttons)
+        {
+            item.interactable = status;
+        }
     }
 }

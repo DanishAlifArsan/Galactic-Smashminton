@@ -510,6 +510,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 0}
   fadeScreen: {fileID: 146712832518680944}
+  buttons:
+  - {fileID: 400228289}
+  - {fileID: 1284471944}
+  - {fileID: 1988873909}
   inGame: 0
 --- !u!1 &846262263
 GameObject:

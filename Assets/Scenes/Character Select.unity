@@ -482,10 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165a3d9fa629d7a40a0af4187062855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 2056506068}
-  - {fileID: 1212499637}
-  - {fileID: 505928134}
+  uIManager: {fileID: 1286942264}
 --- !u!1 &505928132
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +787,7 @@ MonoBehaviour:
   characters:
   - {fileID: 11400000, guid: d89985e4fb0fc5a4a9638eae5c1de037, type: 2}
   - {fileID: 11400000, guid: 8bb680433ee0c4c4ba8f1a7af7a2c005, type: 2}
-  fadeScreen: {fileID: 2140835277}
+  uIManager: {fileID: 1286942264}
 --- !u!4 &1028818740
 Transform:
   m_ObjectHideFlags: 0
@@ -951,6 +948,7 @@ GameObject:
   - component: {fileID: 1286942258}
   - component: {fileID: 1286942257}
   - component: {fileID: 1286942263}
+  - component: {fileID: 1286942264}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1059,6 +1057,25 @@ MonoBehaviour:
   swipeSpeed: 0.2
   minX: -410
   maxX: 465
+--- !u!114 &1286942264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286942256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b130322acca71242b715f6b142fd928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseScreen: {fileID: 0}
+  fadeScreen: {fileID: 2140835277}
+  buttons:
+  - {fileID: 2056506068}
+  - {fileID: 1212499637}
+  - {fileID: 505928134}
+  inGame: 0
 --- !u!1 &1313089175
 GameObject:
   m_ObjectHideFlags: 0
