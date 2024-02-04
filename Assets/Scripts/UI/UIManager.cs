@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,12 +9,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject fadeScreen;
     [SerializeField] private Button[] buttons;
-    public bool inGame;
+    private bool canEsc;
     Animator fadeAnim;
     FadeScreen fadeScene;
+    public Action OnEscPressed;
 
     private void Start() {
         fadeAnim = fadeScreen.GetComponent<Animator>(); 
@@ -22,17 +23,10 @@ public class UIManager : MonoBehaviour
     }
 
     private void Update() {
-        if (!inGame)
+        if (Input.GetKey(KeyCode.Escape) && canEsc)
         {
-            Time.timeScale = 1;
-            return;
+            OnEscPressed?.Invoke();
         }
-
-        if (Input.GetKey(KeyCode.Escape) && GameManager.instance.currentGamePhase != GamePhase.End)
-        {
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0;
-        }    
     }
 
     public void SwitchScene(int scene) 
@@ -42,19 +36,11 @@ public class UIManager : MonoBehaviour
         fadeAnim.SetTrigger("Fade");
     }
 
-    public void Continue() {
-        pauseScreen.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    public void Exit() {
-        Application.Quit();
-    }
-
     public void InteractButton(bool status) {
         foreach (var item in buttons)
         {
             item.interactable = status;
         }
+        canEsc = status;
     }
 }

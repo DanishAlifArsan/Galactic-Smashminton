@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Menuswipe : MonoBehaviour
 {
+    [SerializeField] UIManager uIManager;
     [SerializeField] Transform characterSelectMenu;
     [SerializeField] float swipeSpeed;
     [SerializeField] float minX, maxX;
@@ -15,6 +16,10 @@ public class Menuswipe : MonoBehaviour
         right = 1,
         left = -1,
         noDir = 0
+    }
+
+    private void Start() {
+        uIManager.OnEscPressed += ReturnToPrevious;
     }
 
     // Update is called once per frame
@@ -44,4 +49,8 @@ public class Menuswipe : MonoBehaviour
             }
         }
     }  
+
+    private void ReturnToPrevious() {
+        uIManager.SwitchScene(0);
+    }
 }

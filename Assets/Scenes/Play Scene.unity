@@ -3895,6 +3895,7 @@ GameObject:
   - component: {fileID: 1207863141}
   - component: {fileID: 1207863145}
   - component: {fileID: 1207863146}
+  - component: {fileID: 1207863147}
   m_Layer: 5
   m_Name: Game UI
   m_TagString: Untagged
@@ -4017,7 +4018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b130322acca71242b715f6b142fd928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 324957924}
   fadeScreen: {fileID: 2136415586}
   buttons:
   - {fileID: 1818052886}
@@ -4025,6 +4025,20 @@ MonoBehaviour:
   - {fileID: 1783528680}
   - {fileID: 1102542324}
   inGame: 1
+--- !u!114 &1207863147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207863140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f09acf166e56a24297b7a8b3768ac41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIManager: {fileID: 1207863146}
+  pauseScreen: {fileID: 324957924}
 --- !u!1 &1237597427
 GameObject:
   m_ObjectHideFlags: 0
@@ -5512,8 +5526,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1207863146}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1207863147}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: Continue
         m_Mode: 1
         m_Arguments:

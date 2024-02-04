@@ -1053,6 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba74f6159b1f40749b44d23526bcd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIManager: {fileID: 1286942264}
   characterSelectMenu: {fileID: 489028778}
   swipeSpeed: 0.2
   minX: -410
@@ -1069,7 +1070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b130322acca71242b715f6b142fd928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 0}
   fadeScreen: {fileID: 2140835277}
   buttons:
   - {fileID: 2056506068}
