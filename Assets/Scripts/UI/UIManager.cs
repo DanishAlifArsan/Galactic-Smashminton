@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour
     private void Start() {
         fadeAnim = fadeScreen.GetComponent<Animator>(); 
         fadeScene = fadeScreen.GetComponent<FadeScreen>();
-        InteractButton(true);
     }
 
     private void Update() {
@@ -27,11 +26,17 @@ public class UIManager : MonoBehaviour
         {
             OnEscPressed?.Invoke();
         }
+
+        if (!fadeScene.enabled)
+        {
+            InteractButton(true);
+        } else {
+            InteractButton(false);
+        }
     }
 
     public void SwitchScene(int scene) 
-    {
-        InteractButton(false);    
+    {  
         fadeScene.scene = scene;
         fadeAnim.SetTrigger("Fade");
     }

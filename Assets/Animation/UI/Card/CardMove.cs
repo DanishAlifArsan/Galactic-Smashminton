@@ -24,8 +24,9 @@ public class CardMove : MonoBehaviour
             if (transform.position.x <= 0)
             {
                 isMoved = true;
-                uIManager.InteractButton(true);
             }
+        } else {
+            uIManager.InteractButton(true);
         }
 
     }
