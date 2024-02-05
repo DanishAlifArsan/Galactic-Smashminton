@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3686455171606648746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.97, z: 0}
   m_LocalScale: {x: 1.5370427, y: 0.55712336, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 4184247917061341774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.006, z: -0.011006205}
+  m_LocalPosition: {x: 0, y: 3.58, z: -0.011006205}
   m_LocalScale: {x: 1.5370427, y: 0.55712336, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,10 +73,10 @@ GameObject:
   - component: {fileID: 7592345423614776378}
   - component: {fileID: 1936609713130750050}
   - component: {fileID: 75127360359107888}
-  - component: {fileID: 3505825938921971131}
   - component: {fileID: 4088683775833792391}
   - component: {fileID: 2529864933824044729}
   - component: {fileID: 5178792587316181170}
+  - component: {fileID: 2553435940306928704}
   m_Layer: 8
   m_Name: Human
   m_TagString: Player
@@ -94,7 +94,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6506, y: 1.7949347, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7006184221586970740}
@@ -142,8 +142,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.088679194, b: 0.088679194, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 75081cc859ff9b14bbe756b8425bf0e4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,40 +185,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.070837915, y: -0.3078189}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.98, y: 5.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.639392, y: 5.1777735}
   m_EdgeRadius: 0
---- !u!95 &3505825938921971131
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4305002738686732368}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a4144ac16c63ba42a9c312abfeaf37d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &4088683775833792391
 Rigidbody2D:
   serializedVersion: 4
@@ -281,3 +260,24 @@ MonoBehaviour:
     m_Bits: 128
   playerChest: {fileID: 7006184221586970740}
   smashPoint: {fileID: 2757685059788636856}
+--- !u!95 &2553435940306928704
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305002738686732368}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 731ceb423b6b708439ab7e9dc30d0e0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -24,19 +24,19 @@ public class PlayerMovement : MonoBehaviour
             transform.position = transform.parent.position;
             //anim.SetTrigger("Serve);
         }
+        anim.SetBool("Jump", !isGrounded());
+        anim.SetBool("Walk", rb.velocity.x != 0);
     }
 
     public void Move(float speed, float _direction) {
         if (GameManager.instance.currentGamePhase == GamePhase.Play)
         {
-            // anim.SetBool("Walk", true);
             rb.velocity = new Vector2(speed * _direction, rb.velocity.y);
         }
     }
 
     public void Jump(float jumpForce) {
         if (isGrounded() && GameManager.instance.currentGamePhase == GamePhase.Play) {
-            // anim.SetBool("Walk", false);
             rb.velocity = new Vector2(rb.velocity.x,jumpForce);
         }
     }

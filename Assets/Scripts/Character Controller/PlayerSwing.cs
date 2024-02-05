@@ -68,7 +68,7 @@ public class PlayerSwing : MonoBehaviour
     }
 
     public float[] Service (float swingPower, Rigidbody2D ballRb) {
-        // anim.SetTrigger("Service");
+        anim.SetTrigger("Service");
         return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * 60), swingPower * Mathf.Sin(Mathf.Deg2Rad * 60)};
     }   
 
