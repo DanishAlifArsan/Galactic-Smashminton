@@ -6,7 +6,7 @@ public class EnemyServeState : IState
 {
     public void EnterState(EnemyAI enemy, StateManager stateManager)
     {
-        if (enemy.swing.CheckBall() != null)
+        if (enemy.BallInSight())
         {
             enemy.GetComponent<MonoBehaviour>().StartCoroutine(Serve(enemy, stateManager));
         }
@@ -14,7 +14,7 @@ public class EnemyServeState : IState
 
     public void UpdateState(EnemyAI enemy, StateManager stateManager)
     {
-        if (enemy.swing.CheckBall() == null)
+        if (!enemy.BallInSight())
         {
             stateManager.SwitchState(enemy, stateManager.enemyIdle);
         }
@@ -22,7 +22,6 @@ public class EnemyServeState : IState
 
     private IEnumerator Serve(EnemyAI enemy, StateManager stateManager) {
         yield return new WaitForSeconds(1);
-        // stateManager.SwitchState(enemy, stateManager.enemySwing);
         enemy.swing.Swing(enemy.enemy.swingPower, enemy.swingTarget.position, false);
     }
 }

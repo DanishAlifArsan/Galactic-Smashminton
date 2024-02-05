@@ -9,15 +9,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform target;
     PlayerMovement movement;
     PlayerSwing swing;
+    public Transform servePoint;
     private bool isSwing;
     float swingTimer = Mathf.Infinity;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameObject obj = Instantiate(player.prefab, transform);
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
+        servePoint = swing.servePoint;
     }
 
     // Update is called once per frame

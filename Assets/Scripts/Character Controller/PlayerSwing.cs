@@ -8,6 +8,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private Transform playerChest;
     [SerializeField] private Transform smashPoint;
+    public Transform servePoint;
     private Animator anim;
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -73,12 +74,12 @@ public class PlayerSwing : MonoBehaviour
     }   
 
     public Collider2D CheckBall() {
-        Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange[1], ballLayer);
+        Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange[1] * transform.lossyScale.y, ballLayer);
         return ball;
     }
 
     public bool MissedBall() {
-        Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange[0], ballLayer);
+        Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange[0] * transform.lossyScale.y, ballLayer);
         return ball == null;
     }
 
@@ -86,8 +87,8 @@ public class PlayerSwing : MonoBehaviour
     {
         // Draw vision range circle in editor
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, swingRange[1]);
-        Gizmos.DrawWireSphere(transform.position, swingRange[0]);
+        Gizmos.DrawWireSphere(transform.position, swingRange[1] * transform.lossyScale.y);
+        Gizmos.DrawWireSphere(transform.position, swingRange[0] * transform.lossyScale.y);
     }
 
     private float CalculateXVelocity(Vector2 targetPosition, float velocity) {
@@ -98,5 +99,4 @@ public class PlayerSwing : MonoBehaviour
             return velocity;
         }
     }
-    
 } 

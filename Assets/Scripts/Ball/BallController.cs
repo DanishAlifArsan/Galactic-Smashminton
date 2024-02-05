@@ -12,14 +12,18 @@ public class BallController : MonoBehaviour
     }
     
     [SerializeField] TrailRenderer trail;
-    [SerializeField] Transform playerServePoint, enemyServePoint;
+    [SerializeField] PlayerController player;
+    [SerializeField] EnemyAI enemy;
+    private Transform playerServePoint, enemyServePoint, currentServePoint;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        ResetPosition(playerServePoint);
+        playerServePoint = player.servePoint;
+        enemyServePoint = enemy.servePoint;
+        currentServePoint = playerServePoint;
     }
 
     private void Update() {
@@ -27,6 +31,7 @@ public class BallController : MonoBehaviour
         {
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
+            ResetPosition(currentServePoint);
         } else {
             rb.gravityScale = 1;
         }
@@ -36,12 +41,12 @@ public class BallController : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerField"))
         {
             OnCollideField?.Invoke(this, new OnCollideFieldArgs() {tag = "player"});
-            ResetPosition(enemyServePoint);
+            currentServePoint = enemyServePoint;
         }
         if (other.gameObject.CompareTag("EnemyField"))
         {
             OnCollideField?.Invoke(this, new OnCollideFieldArgs() {tag = "enemy"});
-            ResetPosition(playerServePoint);
+            currentServePoint = playerServePoint;
         }
     }
 

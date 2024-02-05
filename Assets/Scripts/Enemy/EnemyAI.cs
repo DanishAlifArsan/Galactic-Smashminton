@@ -13,15 +13,17 @@ public class EnemyAI : MonoBehaviour
     public PlayerMovement movement;
     public PlayerSwing swing;
     public GameObject obj;
+    public Transform servePoint;
     public bool isJump;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         enemy = CharacterSelect.instance.selectedCharacter;
         obj = Instantiate(enemy.prefab, transform);
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
+        servePoint = swing.servePoint;
 
         stateManager = new StateManager();
         stateManager.StartState(this);
