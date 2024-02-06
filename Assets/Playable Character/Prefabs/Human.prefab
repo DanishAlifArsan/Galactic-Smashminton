@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3686455171606648746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.97, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
   m_LocalScale: {x: 1.5370427, y: 0.55712336, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 4184247917061341774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.58, z: -0.011006205}
+  m_LocalPosition: {x: 0, y: 3.29, z: -0.011006205}
   m_LocalScale: {x: 1.5370427, y: 0.55712336, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -143,12 +143,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 75081cc859ff9b14bbe756b8425bf0e4, type: 3}
+  m_Sprite: {fileID: 1438051257, guid: 75081cc859ff9b14bbe756b8425bf0e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.57, y: 5.91}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -186,18 +186,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.070837915, y: -0.3078189}
+  m_Offset: {x: 0.070837975, y: -0.7067951}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.98, y: 5.92}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5061784, y: 0.5878483}
+    oldSize: {x: 3.57, y: 5.91}
+    newSize: {x: 3.57, y: 5.91}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.639392, y: 5.1777735}
+  m_Size: {x: 2.639392, y: 5.2361603}
   m_EdgeRadius: 0
 --- !u!50 &4088683775833792391
 Rigidbody2D:
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingRange:
-  - 2
-  - 4
+  - 1.5
+  - 3.5
   ballLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -308,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 7216900399890122564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.56, y: 0, z: 0}
+  m_LocalPosition: {x: 1.58, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
