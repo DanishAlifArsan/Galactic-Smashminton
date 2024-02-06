@@ -7,12 +7,15 @@ public class CardMove : MonoBehaviour
 {
     [SerializeField] private UIManager uIManager;
     bool isMoved;
-    
-    // Start is called before the first frame update
+
     void OnEnable()
     {
         isMoved = false;
         uIManager.InteractButton(false);
+    }
+
+    private void Start() {
+        uIManager.OnEscPressed += ReturnToPrevious;
     }
 
     // Update is called once per frame
@@ -21,13 +24,16 @@ public class CardMove : MonoBehaviour
         if (!isMoved)
         {
             transform.Translate(Vector2.left * Time.deltaTime  * 5, Space.World);    
-            if (transform.position.x <= 0)
+            if (transform.position.x <= -17)
             {
                 isMoved = true;
             }
         } else {
             uIManager.InteractButton(true);
         }
+    }
 
+    private void ReturnToPrevious() {
+        uIManager.SwitchScene(0);
     }
 }
