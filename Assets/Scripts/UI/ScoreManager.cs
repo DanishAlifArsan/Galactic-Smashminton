@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] BallController ball;
     [SerializeField] int maxScore;
     [SerializeField] GameObject gameoverScreen;
-    [SerializeField] TextMeshProUGUI gameoverText;
+    [SerializeField] Image gameoverText; 
+    [SerializeField] Sprite winText, loseText;
 
     private int playerScore, enemyScore;
 
@@ -53,9 +55,9 @@ public class ScoreManager : MonoBehaviour
         gameoverScreen.SetActive(true);
         if (playerScore > enemyScore)
         {
-            gameoverText.text = "You Win!";    
+            gameoverText.sprite = winText; 
         } else {
-            gameoverText.text = "You Lose!";
+            gameoverText.sprite = loseText;
         }
     }
 }
