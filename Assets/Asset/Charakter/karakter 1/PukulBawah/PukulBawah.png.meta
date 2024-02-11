@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PukulBawah_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 561
+        height: 599
+      alignment: 9
+      pivot: {x: 0.4470058, y: 0.63338685}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8d9bef895e89f4882fea80c1430e56
+      internalID: -1700126248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulBawah_1
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 0
+        width: 561
+        height: 599
+      alignment: 9
+      pivot: {x: 0.45031804, y: 0.63959086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829fe8a60d3b32241bf71f9d14887f1c
+      internalID: 960927348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulBawah_2
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 0
+        width: 561
+        height: 599
+      alignment: 9
+      pivot: {x: 0.49337578, y: 0.63028485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a9c9117270b094a9e3c6145897d62f
+      internalID: 765340402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulBawah_3
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 0
+        width: 561
+        height: 599
+      alignment: 9
+      pivot: {x: 0.5231851, y: 0.63028485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07587cb663dcba0418ae25eab9abd6e9
+      internalID: -1845232616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulBawah_4
+      rect:
+        serializedVersion: 2
+        x: 2244
+        y: 0
+        width: 561
+        height: 599
+      alignment: 9
+      pivot: {x: 0.5563064, y: 0.6240808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97f2792130aa3784a916783258494b6d
+      internalID: 416611041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PukulBawah_0: -1700126248
+      PukulBawah_1: 960927348
+      PukulBawah_2: 765340402
+      PukulBawah_3: -1845232616
+      PukulBawah_4: 416611041
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

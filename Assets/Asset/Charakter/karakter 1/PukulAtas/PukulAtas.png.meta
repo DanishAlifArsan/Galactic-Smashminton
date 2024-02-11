@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PukulAtas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 834
+        height: 536
+      alignment: 9
+      pivot: {x: 0.63910973, y: 0.623686}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd14e2e25feaef3488f73efa435be518
+      internalID: -416654736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulAtas_1
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 0
+        width: 834
+        height: 536
+      alignment: 9
+      pivot: {x: 0.6529576, y: 0.603014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bd19d203f034e44a9c3926546e7f3da
+      internalID: -1760969768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulAtas_2
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 0
+        width: 834
+        height: 536
+      alignment: 9
+      pivot: {x: 0.67307407, y: 0.6085231}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98d9a7be943635c4395aed4e4333cd18
+      internalID: 764225447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulAtas_3
+      rect:
+        serializedVersion: 2
+        x: 2502
+        y: 0
+        width: 834
+        height: 536
+      alignment: 9
+      pivot: {x: 0.6859901, y: 0.596465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f651ccd8ae3b1f458f71c9396025d5c
+      internalID: 7400600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulAtas_4
+      rect:
+        serializedVersion: 2
+        x: 3336
+        y: 0
+        width: 834
+        height: 536
+      alignment: 9
+      pivot: {x: 0.7014892, y: 0.58842623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d01d6057c02c946a5a9b65f9e75029
+      internalID: 1414058433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PukulAtas_5
+      rect:
+        serializedVersion: 2
+        x: 4170
+        y: 0
+        width: 834
+        height: 536
+      alignment: 9
+      pivot: {x: 0.70836085, y: 0.5876223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32421906b1466714090a2619f848c3ff
+      internalID: -186542717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +258,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PukulAtas_0: -416654736
+      PukulAtas_1: -1760969768
+      PukulAtas_2: 764225447
+      PukulAtas_3: 7400600
+      PukulAtas_4: 1414058433
+      PukulAtas_5: -186542717
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
