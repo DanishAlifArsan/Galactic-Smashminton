@@ -10,4 +10,9 @@ public class PlayableCharacter : ScriptableObject
     public float jumpForce;
     public float swingCooldown;
     public float swingPower;
+    public float swingAngle;
+    public float smashPower;
+    public float smashAngle;
+    public float servicePower;
+    public float serviceAngle;
 }

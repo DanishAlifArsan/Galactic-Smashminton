@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Transform servePoint;
     private bool isSwing;
     float swingTimer = Mathf.Infinity;
+    float[,] swingPowers;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
+        PopulateArray();
     }
 
     // Update is called once per frame
@@ -49,11 +51,21 @@ public class PlayerController : MonoBehaviour
             swingTimer = 0;
             isSwing = true;
             
-            swing.Swing(player.swingPower, target.position, !movement.isGrounded());
+            swing.Swing(swingPowers, target.position, !movement.isGrounded());
         }
     }
 
     private bool CanSwing() {
         return swingTimer >= player.swingCooldown;
+    }
+
+    private void PopulateArray() {
+        swingPowers = new float[3,3];
+        swingPowers[0,0] = player.swingPower;
+        swingPowers[0,1] = player.swingAngle;
+        swingPowers[1,0] = player.smashPower;
+        swingPowers[1,1] = player.smashAngle;
+        swingPowers[2,0] = player.servicePower;
+        swingPowers[2,1] = player.serviceAngle;
     }
 }

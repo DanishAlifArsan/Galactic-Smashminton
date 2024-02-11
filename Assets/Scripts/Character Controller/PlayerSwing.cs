@@ -14,7 +14,7 @@ public class PlayerSwing : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Swing(float swingPower, Vector2 targetPosition, bool isJump) {
+    public void Swing(float[,] swingPowers, Vector2 targetPosition, bool isJump) {
         if (GameManager.instance.currentGamePhase == GamePhase.End)
         {
             return;
@@ -27,18 +27,18 @@ public class PlayerSwing : MonoBehaviour
             if (GameManager.instance.currentGamePhase == GamePhase.Serve)
             {
                 GameManager.instance.currentGamePhase = GamePhase.Play;
-                float[] swingVelocity = Service(swingPower, ballRb);
+                float[] swingVelocity = Service(swingPowers[2,0], swingPowers[2,1]);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
 
             }
             else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
             {
-                float[] swingVelocity = Smash(swingPower * 2, ballRb);
+                float[] swingVelocity = Smash(swingPowers[1,0], swingPowers[1,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
             } else {
-                float[] swingVelocity = Hit(swingPower, ballRb);
+                float[] swingVelocity = Hit(swingPowers[0,0], swingPowers[0,1], swingPowers[2,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
             }
@@ -49,28 +49,28 @@ public class PlayerSwing : MonoBehaviour
         }
     }
 
-    public float[] Hit(float swingPower, Rigidbody2D ballRb) {
+    public float[] Hit(float swingPower, float swingAngleUpper, float SwingAngleLower, Rigidbody2D ballRb) {
         float angle;
         if (ballRb.transform.position.y > playerChest.position.y)
         {
             anim.SetTrigger("UpperSwing");
-            angle = 30;
+            angle = swingAngleUpper;
         } else {
             anim.SetTrigger("DownSwing");
-            angle = 60;
+            angle = SwingAngleLower;
         }
 
         return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * angle), swingPower * Mathf.Sin(Mathf.Deg2Rad * angle)};
     }
 
-    public float[] Smash(float smashPower, Rigidbody2D ballRb) {
-        // anim.SetTrigger("Smash");
-        return new float[] {smashPower * Mathf.Cos(Mathf.Deg2Rad * 0), ballRb.velocity.y};
+    public float[] Smash(float smashPower, float swingAngle, Rigidbody2D ballRb) {
+        anim.SetTrigger("UpperSwing");
+        return new float[] {smashPower * Mathf.Cos(Mathf.Deg2Rad * swingAngle), ballRb.velocity.y};
     }
 
-    public float[] Service (float swingPower, Rigidbody2D ballRb) {
+    public float[] Service (float swingPower, float swingAngle) {
         anim.SetTrigger("Service");
-        return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * 60), swingPower * Mathf.Sin(Mathf.Deg2Rad * 60)};
+        return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * swingAngle), swingPower * Mathf.Sin(Mathf.Deg2Rad * 60)};
     }   
 
     public Collider2D CheckBall() {

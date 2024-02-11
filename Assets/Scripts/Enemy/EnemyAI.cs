@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject obj;
     public Transform servePoint;
     public bool isJump;
+    public float[,] swingPowers;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +25,7 @@ public class EnemyAI : MonoBehaviour
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
+        PopulateArray();
 
         stateManager = new StateManager();
         stateManager.StartState(this);
@@ -39,5 +41,15 @@ public class EnemyAI : MonoBehaviour
 
     public bool BallInSight() {
         return Mathf.Abs(ball.position.x - transform.position.x) < enemySight || ball.position.x > obj.transform.position.x;
+    }
+
+    private void PopulateArray() {
+        swingPowers = new float[3,3];
+        swingPowers[0,0] = enemy.swingPower;
+        swingPowers[0,1] = enemy.swingAngle;
+        swingPowers[1,0] = enemy.smashPower;
+        swingPowers[1,1] = enemy.smashAngle;
+        swingPowers[2,0] = enemy.servicePower;
+        swingPowers[2,1] = enemy.serviceAngle;
     }
 }

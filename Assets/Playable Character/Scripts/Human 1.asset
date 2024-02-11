@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95cc4f8628f186409cfa92e54faf90f, type: 3}
+  m_Name: Human 1
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4305002738686732368, guid: fffceb42485565f41a76b01e3d7706fe, type: 3}
+  speed: 4
+  jumpForce: 6
+  swingCooldown: 0.5
+  swingPower: 8
+  swingAngle: 30
+  smashPower: 20
+  smashAngle: 0
+  servicePower: 10
+  serviceAngle: 60

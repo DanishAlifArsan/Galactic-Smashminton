@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5178792587316181170}
   - component: {fileID: 2553435940306928704}
   m_Layer: 8
-  m_Name: Human
+  m_Name: Human 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,12 +143,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1438051257, guid: 75081cc859ff9b14bbe756b8425bf0e4, type: 3}
+  m_Sprite: {fileID: 1186289050, guid: fe8bdaad8f3012b49b09ef40f34ab7a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.57, y: 5.91}
+  m_Size: {x: 4.072, y: 5.09}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -189,9 +189,9 @@ BoxCollider2D:
   m_Offset: {x: 0.070837975, y: -0.7067951}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5061784, y: 0.5878483}
-    oldSize: {x: 3.57, y: 5.91}
-    newSize: {x: 3.57, y: 5.91}
+    pivot: {x: 0.58954126, y: 0.61634636}
+    oldSize: {x: 4.072, y: 5.09}
+    newSize: {x: 4.072, y: 5.09}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingRange:
-  - 1.5
+  - 1
   - 3.5
   ballLayer:
     serializedVersion: 2
@@ -272,7 +272,7 @@ Animator:
   m_GameObject: {fileID: 4305002738686732368}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 731ceb423b6b708439ab7e9dc30d0e0f, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2213527f87f03c49ab3931d61555d1c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

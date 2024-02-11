@@ -22,6 +22,6 @@ public class EnemyServeState : IState
 
     private IEnumerator Serve(EnemyAI enemy, StateManager stateManager) {
         yield return new WaitForSeconds(1);
-        enemy.swing.Swing(enemy.enemy.swingPower, enemy.swingTarget.position, false);
+        enemy.swing.Swing(enemy.swingPowers, enemy.swingTarget.position, false);
     }
 }
