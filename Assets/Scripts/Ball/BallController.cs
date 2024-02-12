@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
         public string tag;
     }
     
-    [SerializeField] TrailRenderer trail;
+    [SerializeField] TrailRenderer normalTrail, smashTrail;
     [SerializeField] PlayerController player;
     [SerializeField] EnemyAI enemy;
     private Transform playerServePoint, enemyServePoint, currentServePoint;
@@ -35,6 +35,13 @@ public class BallController : MonoBehaviour
         } else {
             rb.gravityScale = 1;
         }
+        
+        if (rb.velocity.x > 15 || rb.velocity.y > 15)
+        {
+            normalTrail.Clear();
+        } else {
+            smashTrail.Clear();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -53,6 +60,7 @@ public class BallController : MonoBehaviour
     private void ResetPosition(Transform servePoint) {
         transform.position = servePoint.position;
         rb.velocity = Vector2.zero;
-        trail.Clear();
+        normalTrail.Clear();
+        smashTrail.Clear();
     }
 }
