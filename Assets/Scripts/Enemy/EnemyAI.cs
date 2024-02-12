@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         enemy = CharacterSelect.instance.selectedCharacter;
-        obj = Instantiate(enemy.prefab, transform);
+        obj = Instantiate(enemy.prefab, transform).transform.GetChild(0).gameObject;
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;

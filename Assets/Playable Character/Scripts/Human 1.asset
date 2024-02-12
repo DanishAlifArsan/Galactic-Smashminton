@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95cc4f8628f186409cfa92e54faf90f, type: 3}
   m_Name: Human 1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4305002738686732368, guid: fffceb42485565f41a76b01e3d7706fe, type: 3}
+  prefab: {fileID: 3985578514669550791, guid: 5faeb703a2b89b64ca67b07e02cb8653, type: 3}
   speed: 4
   jumpForce: 6
   swingCooldown: 0.5

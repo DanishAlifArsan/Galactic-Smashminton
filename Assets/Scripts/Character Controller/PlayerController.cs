@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GameObject obj = Instantiate(player.prefab, transform);
+        GameObject obj = Instantiate(player.prefab, transform).transform.GetChild(0).gameObject;
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
