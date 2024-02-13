@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float enemyJumpSight;
     public Transform ball;
     public Transform swingTarget;
+    [SerializeField] Transform indicator;
     public PlayerMovement movement;
     public PlayerSwing swing;
     public GameObject obj;
@@ -25,6 +26,7 @@ public class EnemyAI : MonoBehaviour
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
+        indicator.parent = obj.transform;
         PopulateArray();
 
         stateManager = new StateManager();

@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayableCharacter player;
     [SerializeField] Transform target;
+    [SerializeField] Transform indicator;
     PlayerMovement movement;
     PlayerSwing swing;
     public Transform servePoint;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
+        indicator.parent = obj.transform;
         PopulateArray();
     }
 
