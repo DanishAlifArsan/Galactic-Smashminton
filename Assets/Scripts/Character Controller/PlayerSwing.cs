@@ -23,6 +23,7 @@ public class PlayerSwing : MonoBehaviour
         if (CheckBall() != null && MissedBall())
         {    
             Rigidbody2D ballRb = CheckBall().GetComponent<Rigidbody2D>();
+            BallController ballController = CheckBall().GetComponent<BallController>();
             float v_x, v_y;
             if (GameManager.instance.currentGamePhase == GamePhase.Serve)
             {
@@ -30,6 +31,7 @@ public class PlayerSwing : MonoBehaviour
                 float[] swingVelocity = Service(swingPowers[2,0], swingPowers[2,1]);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
+                ballController.HitEffect("normal");
 
             }
             else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
@@ -37,10 +39,12 @@ public class PlayerSwing : MonoBehaviour
                 float[] swingVelocity = Smash(swingPowers[1,0], swingPowers[1,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
+                ballController.HitEffect("smash");
             } else {
                 float[] swingVelocity = Hit(swingPowers[0,0], swingPowers[0,1], swingPowers[2,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
+                ballController.HitEffect("normal");
             }
             ballRb.velocity = new Vector2(CalculateXVelocity(targetPosition, v_x), v_y);
 
@@ -98,5 +102,9 @@ public class PlayerSwing : MonoBehaviour
         } else {
             return velocity;
         }
+    }
+
+    public void StopParticle() {
+    
     }
 } 

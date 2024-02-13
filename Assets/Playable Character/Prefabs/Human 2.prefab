@@ -297,6 +297,8 @@ MonoBehaviour:
     m_Bits: 128
   playerChest: {fileID: 1246623042615928315}
   smashPoint: {fileID: 1679778521904624901}
+  hitEffect: {fileID: 0}
+  smashEffect: {fileID: 0}
   servePoint: {fileID: 1182199808218257379}
 --- !u!95 &687512769444634631
 Animator:

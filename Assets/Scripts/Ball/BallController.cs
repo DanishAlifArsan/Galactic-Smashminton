@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -12,6 +11,8 @@ public class BallController : MonoBehaviour
     }
     
     [SerializeField] TrailRenderer normalTrail, smashTrail;
+    [SerializeField] ParticleSystem normalEffect, smashEffect;
+    [SerializeField] Transform effectHolder;
     [SerializeField] PlayerController player;
     [SerializeField] EnemyAI enemy;
     private Transform playerServePoint, enemyServePoint, currentServePoint;
@@ -35,12 +36,13 @@ public class BallController : MonoBehaviour
         } else {
             rb.gravityScale = 1;
         }
-        
-        if (rb.velocity.x > 15 || rb.velocity.y > 15)
+
+        if (normalEffect.isPlaying || smashEffect.isPlaying)
         {
-            normalTrail.Clear();
+            effectHolder.parent = null;
         } else {
-            smashTrail.Clear();
+            effectHolder.parent = transform;
+            effectHolder.localPosition = Vector3.zero;
         }
     }
 
@@ -62,5 +64,23 @@ public class BallController : MonoBehaviour
         rb.velocity = Vector2.zero;
         normalTrail.Clear();
         smashTrail.Clear();
+        normalEffect.Stop();
+        smashEffect.Stop();
     }
+
+    public void HitEffect(string tag) {
+        switch (tag)
+        {
+            case "normal":
+                normalTrail.enabled = true;
+                smashTrail.enabled = false;
+                normalEffect.Play();
+                break;
+            case "smash":
+                normalTrail.enabled = false;
+                smashTrail.enabled = true;
+                smashEffect.Play();
+                break;
+        }
+    }   
 }
