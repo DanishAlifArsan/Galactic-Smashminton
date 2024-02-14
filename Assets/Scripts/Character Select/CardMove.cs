@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CardMove : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class CardMove : MonoBehaviour
     void OnEnable()
     {
         isMoved = false;
-        uIManager.InteractButton(false);
     }
 
     private void Start() {
@@ -28,8 +26,6 @@ public class CardMove : MonoBehaviour
             {
                 isMoved = true;
             }
-        } else {
-            uIManager.InteractButton(true);
         }
     }
 

@@ -7,7 +7,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private float[] swingRange;
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private Transform playerChest;
-    [SerializeField] private Transform smashPoint;
+    public Transform smashPoint;
     public Transform servePoint;
     private Animator anim;
     private void Awake() {

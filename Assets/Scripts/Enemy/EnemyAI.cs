@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
         indicator.parent = obj.transform;
+        indicator.localPosition = swing.smashPoint.localPosition;
         PopulateArray();
 
         stateManager = new StateManager();
