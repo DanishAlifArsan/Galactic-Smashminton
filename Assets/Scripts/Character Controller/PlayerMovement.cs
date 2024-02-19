@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private AudioClip walkSound;
     BoxCollider2D col;
     Rigidbody2D rb;
     Animator anim;
@@ -29,14 +30,24 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(float speed, float _direction) {
-        if (GameManager.instance.currentGamePhase == GamePhase.Play)
+        if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
         {
-            rb.velocity = new Vector2(speed * _direction, rb.velocity.y);
+            return;
+        }
+
+        rb.velocity = new Vector2(speed * _direction, rb.velocity.y);
+        if (isGrounded()) {
+            AudioManager.instance.PlaySound(walkSound);
         }
     }
 
     public void Jump(float jumpForce) {
-        if (isGrounded() && GameManager.instance.currentGamePhase == GamePhase.Play) {
+        if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
+        {
+            return;
+        }
+
+        if (isGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x,jumpForce);
         }
     }

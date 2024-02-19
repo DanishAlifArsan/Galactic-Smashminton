@@ -15,6 +15,7 @@ public class BallController : MonoBehaviour
     [SerializeField] Transform effectHolder;
     [SerializeField] PlayerController player;
     [SerializeField] EnemyAI enemy;
+
     private Transform playerServePoint, enemyServePoint, currentServePoint;
     Rigidbody2D rb;
 

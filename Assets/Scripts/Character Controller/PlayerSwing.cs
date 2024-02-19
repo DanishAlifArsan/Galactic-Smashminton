@@ -7,6 +7,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private float[] swingRange;
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private Transform playerChest;
+    [SerializeField] private AudioClip hitSound;
     public Transform smashPoint;
     public Transform servePoint;
     private Animator anim;
@@ -15,13 +16,14 @@ public class PlayerSwing : MonoBehaviour
     }
 
     public void Swing(float[,] swingPowers, Vector2 targetPosition, bool isJump) {
-        if (GameManager.instance.currentGamePhase == GamePhase.End)
+        if (GameManager.instance.currentGamePhase == GamePhase.End || GameManager.instance.currentGamePhase == GamePhase.Score)
         {
+            anim.SetTrigger("UpperSwing");
             return;
         }
 
         if (CheckBall() != null && MissedBall())
-        {    
+        {   
             Rigidbody2D ballRb = CheckBall().GetComponent<Rigidbody2D>();
             BallController ballController = CheckBall().GetComponent<BallController>();
             float v_x, v_y;
@@ -47,6 +49,7 @@ public class PlayerSwing : MonoBehaviour
                 ballController.HitEffect("normal");
             }
             ballRb.velocity = new Vector2(CalculateXVelocity(targetPosition, v_x), v_y);
+            AudioManager.instance.PlaySound(hitSound);
 
         } else {
             anim.SetTrigger("UpperSwing");

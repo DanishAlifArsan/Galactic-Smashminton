@@ -21,15 +21,6 @@ public class ScoreManager : MonoBehaviour
         ball.OnCollideField += Score;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (GameManager.instance.currentGamePhase == GamePhase.End)
-        {
-            StartCoroutine(GameOver());
-        }
-    }
-
     private void Score(object sender, BallController.OnCollideFieldArgs args) {
         switch (args.tag)
         {
@@ -42,16 +33,22 @@ public class ScoreManager : MonoBehaviour
                 playerScoreText.text = playerScore.ToString();
                 break;
         }
+        StartCoroutine(Score());
+    }
+
+    private IEnumerator Score() {
+        GameManager.instance.RoundEnd();
+        yield return new WaitForSeconds(1);
         if (Mathf.Abs(enemyScore - playerScore) >= 2 && (enemyScore >= maxScore || playerScore >= maxScore))
         {
             GameManager.instance.currentGamePhase = GamePhase.End;
+            GameOver();
         } else {
-            GameManager.instance.currentGamePhase = GamePhase.Serve;
+            GameManager.instance.RoundStart();
         }
     }
 
-    private IEnumerator GameOver() {
-        yield return new WaitForSeconds(1);
+    private void GameOver() {
         gameoverScreen.SetActive(true);
         if (playerScore > enemyScore)
         {
