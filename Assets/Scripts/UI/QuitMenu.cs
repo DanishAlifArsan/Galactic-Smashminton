@@ -13,7 +13,7 @@ public class QuitMenu : MonoBehaviour
         uIManager.OnEscPressed += QuitGame;
     }
 
-    private void QuitGame() {
+    public void QuitGame() {
         QuitScreen.SetActive(true);   
     }
 

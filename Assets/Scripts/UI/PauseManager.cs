@@ -13,7 +13,7 @@ public class PauseManager : MonoBehaviour
        uIManager.OnEscPressed += PauseGame; 
     }
 
-    private void PauseGame() {
+    public void PauseGame() {
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
     }
