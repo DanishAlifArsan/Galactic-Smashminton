@@ -10,7 +10,7 @@ public class BallController : MonoBehaviour
         public string tag;
     }
     
-    [SerializeField] TrailRenderer normalTrail, smashTrail;
+    [SerializeField] TrailRenderer ballTrail;
     [SerializeField] ParticleSystem normalEffect, smashEffect;
     [SerializeField] Transform effectHolder;
     [SerializeField] PlayerController player;
@@ -63,25 +63,22 @@ public class BallController : MonoBehaviour
     private void ResetPosition(Transform servePoint) {
         transform.position = servePoint.position;
         rb.velocity = Vector2.zero;
-        normalTrail.Clear();
-        smashTrail.Clear();
+        ballTrail.Clear();
         normalEffect.Stop();
         smashEffect.Stop();
     }
 
-    public void HitEffect(string tag) {
+    public void HitEffect(Material material, string tag) {
+        ballTrail.material = material;
+        ballTrail.enabled = true;
         switch (tag)
         {
             case "normal":
-                normalTrail.enabled = true;
-                smashTrail.enabled = false;
                 normalEffect.Play();
                 break;
             case "smash":
-                normalTrail.enabled = false;
-                smashTrail.enabled = true;
                 smashEffect.Play();
                 break;
         }
-    }   
+    }  
 }

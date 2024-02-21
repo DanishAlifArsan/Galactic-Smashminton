@@ -6,9 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioClip walkSound;
+    [SerializeField] private ParticleSystem jumpEffect;
     BoxCollider2D col;
     Rigidbody2D rb;
     Animator anim;
+    bool isJump;
     
     // Start is called before the first frame update
     void Awake()
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        isJump = false;
     }
 
     private void Update() {
@@ -23,10 +26,20 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
         {
             transform.position = transform.parent.position;
+            jumpEffect?.Stop();
             //anim.SetTrigger("Serve);
         }
         anim.SetBool("Jump", !isGrounded());
         anim.SetBool("Walk", rb.velocity.x != 0);
+
+        if (isJump && rb.velocity.y < 0)
+        {
+            if (isGrounded())
+            {
+                isJump = false;
+                jumpEffect?.Play();
+            }
+        }
     }
 
     public void Move(float speed, float _direction) {
@@ -49,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x,jumpForce);
+            isJump = true;
         }
     }
 

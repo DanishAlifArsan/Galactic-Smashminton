@@ -7,6 +7,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private float[] swingRange;
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private Transform playerChest;
+    [SerializeField] private Material hitTrail, smashTrail;
     [SerializeField] private AudioClip hitSound;
     public Transform smashPoint;
     public Transform servePoint;
@@ -33,7 +34,7 @@ public class PlayerSwing : MonoBehaviour
                 float[] swingVelocity = Service(swingPowers[2,0], swingPowers[2,1]);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
-                ballController.HitEffect("normal");
+                ballController.HitEffect(hitTrail, "normal");
 
             }
             else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
@@ -41,12 +42,12 @@ public class PlayerSwing : MonoBehaviour
                 float[] swingVelocity = Smash(swingPowers[1,0], swingPowers[1,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
-                ballController.HitEffect("smash");
+                ballController.HitEffect(smashTrail, "smash");
             } else {
                 float[] swingVelocity = Hit(swingPowers[0,0], swingPowers[0,1], swingPowers[2,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
-                ballController.HitEffect("normal");
+                ballController.HitEffect(hitTrail, "normal");
             }
             ballRb.velocity = new Vector2(CalculateXVelocity(targetPosition, v_x), v_y);
             AudioManager.instance.PlaySound(hitSound);
@@ -105,9 +106,5 @@ public class PlayerSwing : MonoBehaviour
         } else {
             return velocity;
         }
-    }
-
-    public void StopParticle() {
-    
     }
 } 
