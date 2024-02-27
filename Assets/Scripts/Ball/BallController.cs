@@ -29,13 +29,16 @@ public class BallController : MonoBehaviour
     }
 
     private void Update() {
-        if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
+        if (GameManager.instance.currentGamePhase == GamePhase.Play)
         {
+            rb.gravityScale = 1;
+        } else {
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
-            ResetPosition(currentServePoint);
-        } else {
-            rb.gravityScale = 1;
+            if (GameManager.instance.currentGamePhase == GamePhase.Serve )
+            {
+                ResetPosition(currentServePoint);
+            }
         }
 
         if (normalEffect.isPlaying || smashEffect.isPlaying)
@@ -62,7 +65,6 @@ public class BallController : MonoBehaviour
 
     private void ResetPosition(Transform servePoint) {
         transform.position = servePoint.position;
-        rb.velocity = Vector2.zero;
         ballTrail.Clear();
         normalEffect.Stop();
         smashEffect.Stop();

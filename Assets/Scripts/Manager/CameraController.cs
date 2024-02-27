@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
 
     private (Vector3 center, float size) CalculateOrthoSize() {
         var bounds = new Bounds();
-        foreach (var col in FindObjectsOfType<Collider2D>())
+        foreach (var col in FindObjectsOfType<Boundary>())
         {
             bounds.Encapsulate(col.bounds);
         }
