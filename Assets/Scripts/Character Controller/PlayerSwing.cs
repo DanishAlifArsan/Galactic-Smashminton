@@ -9,6 +9,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private Transform playerChest;
     [SerializeField] private Material hitTrail, smashTrail;
     [SerializeField] private AudioClip hitSound;
+    [SerializeField] private GameObject powerGameObject;
     public Transform smashPoint;
     public Transform servePoint;
     private Animator anim;
@@ -39,10 +40,18 @@ public class PlayerSwing : MonoBehaviour
             }
             else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
             {
-                float[] swingVelocity = Smash(swingPowers[1,0], swingPowers[1,1], ballRb);
-                v_x = swingVelocity[0];
-                v_y = swingVelocity[1];
-                ballController.HitEffect(smashTrail, "smash");
+                if (powerGameObject != null)
+                {
+                    Power(ballRb);
+                    return;
+
+                } else {
+                    float[] swingVelocity = Smash(swingPowers[1,0], swingPowers[1,1], ballRb);
+                    v_x = swingVelocity[0];
+                    v_y = swingVelocity[1];
+                    ballController.HitEffect(smashTrail, "smash");
+                }
+                
             } else {
                 float[] swingVelocity = Hit(swingPowers[0,0], swingPowers[0,1], swingPowers[2,1], ballRb);
                 v_x = swingVelocity[0];
@@ -80,6 +89,13 @@ public class PlayerSwing : MonoBehaviour
         anim.SetTrigger("Service");
         return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * swingAngle), swingPower * Mathf.Sin(Mathf.Deg2Rad * 60)};
     }   
+
+    public void Power(Rigidbody2D ballRb) {
+        ballRb.velocity = Vector2.zero;
+        IPower power = powerGameObject.GetComponent<IPower>();
+        power.SetParent(ballRb.transform);
+        power.StartPower();
+    }
 
     public Collider2D CheckBall() {
         Collider2D ball = Physics2D.OverlapCircle(transform.position, swingRange[1] * transform.lossyScale.y, ballLayer);

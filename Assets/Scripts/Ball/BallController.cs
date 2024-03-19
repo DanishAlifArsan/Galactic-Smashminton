@@ -10,9 +10,7 @@ public class BallController : MonoBehaviour
         public string tag;
     }
     
-    [SerializeField] TrailRenderer ballTrail;
-    [SerializeField] ParticleSystem normalEffect, smashEffect;
-    [SerializeField] Transform effectHolder;
+    private BallEffect effect;
     [SerializeField] PlayerController player;
     [SerializeField] EnemyAI enemy;
 
@@ -23,6 +21,7 @@ public class BallController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        effect = GetComponent<BallEffect>();
         playerServePoint = player.servePoint;
         enemyServePoint = enemy.servePoint;
         currentServePoint = playerServePoint;
@@ -39,14 +38,6 @@ public class BallController : MonoBehaviour
             {
                 ResetPosition(currentServePoint);
             }
-        }
-
-        if (normalEffect.isPlaying || smashEffect.isPlaying)
-        {
-            effectHolder.parent = null;
-        } else {
-            effectHolder.parent = transform;
-            effectHolder.localPosition = Vector3.zero;
         }
     }
 
@@ -65,22 +56,10 @@ public class BallController : MonoBehaviour
 
     private void ResetPosition(Transform servePoint) {
         transform.position = servePoint.position;
-        ballTrail.Clear();
-        normalEffect.Stop();
-        smashEffect.Stop();
+        effect.StopEffect();
     }
 
     public void HitEffect(Material material, string tag) {
-        ballTrail.material = material;
-        ballTrail.enabled = true;
-        switch (tag)
-        {
-            case "normal":
-                normalEffect.Play();
-                break;
-            case "smash":
-                smashEffect.Play();
-                break;
-        }
+        effect.PlayEffect(material, tag);
     }  
 }
