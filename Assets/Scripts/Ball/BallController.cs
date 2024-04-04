@@ -9,6 +9,11 @@ public class BallController : MonoBehaviour
     public class OnCollideFieldArgs : EventArgs {
         public string tag;
     }
+    private bool isSmash;
+    public bool IsSmash { get {return isSmash;} set{isSmash = value;} }
+
+    private PowerSystem power;
+    public PowerSystem Power { get {return power;} set{power = value;} }
     
     private BallEffect effect;
     [SerializeField] PlayerController player;
@@ -55,11 +60,18 @@ public class BallController : MonoBehaviour
     }
 
     private void ResetPosition(Transform servePoint) {
+        isSmash =false;
+        power = null;
         transform.position = servePoint.position;
-        effect.StopEffect();
+        HitEffect(null, null, false);
     }
 
-    public void HitEffect(Material material, string tag) {
-        effect.PlayEffect(material, tag);
+    public void HitEffect(Material material, string tag, bool status = true) {
+        if (status)
+        {
+            effect.PlayEffect(material, tag);
+        } else {
+            effect.StopEffect();
+        }
     }  
 }

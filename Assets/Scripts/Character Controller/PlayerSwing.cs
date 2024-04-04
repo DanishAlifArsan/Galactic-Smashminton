@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerSwing : MonoBehaviour
 {
     [SerializeField] private float[] swingRange;
+    [SerializeField] private float smashRange;
     [SerializeField] private LayerMask ballLayer;
     [SerializeField] private Transform playerChest;
     [SerializeField] private Material hitTrail, smashTrail;
     [SerializeField] private AudioClip hitSound;
-    [SerializeField] private GameObject powerGameObject;
+    [SerializeField] private PowerSystem power;
     public Transform smashPoint;
     public Transform servePoint;
     private Animator anim;
@@ -29,20 +30,29 @@ public class PlayerSwing : MonoBehaviour
             Rigidbody2D ballRb = CheckBall().GetComponent<Rigidbody2D>();
             BallController ballController = CheckBall().GetComponent<BallController>();
             float v_x, v_y;
+    
+            if (ballController.IsSmash)
+            {
+                ballController.Power?.EndPower();
+                ballController.Power = null;
+            }
+            
             if (GameManager.instance.currentGamePhase == GamePhase.Serve)
             {
                 GameManager.instance.currentGamePhase = GamePhase.Play;
                 float[] swingVelocity = Service(swingPowers[2,0], swingPowers[2,1]);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
+                ballController.IsSmash = false;
                 ballController.HitEffect(hitTrail, "normal");
 
             }
-            else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < .5f && isJump)
+            else if (Vector2.Distance(ballRb.transform.position, smashPoint.transform.position) < smashRange && isJump)
             {
-                if (powerGameObject != null)
+                ballController.IsSmash = true;
+                if (power != null)
                 {
-                    Power(ballRb);
+                    Power(ballRb, ballController);
                     return;
 
                 } else {
@@ -56,6 +66,7 @@ public class PlayerSwing : MonoBehaviour
                 float[] swingVelocity = Hit(swingPowers[0,0], swingPowers[0,1], swingPowers[2,1], ballRb);
                 v_x = swingVelocity[0];
                 v_y = swingVelocity[1];
+                ballController.IsSmash = false;
                 ballController.HitEffect(hitTrail, "normal");
             }
             ballRb.velocity = new Vector2(CalculateXVelocity(targetPosition, v_x), v_y);
@@ -90,11 +101,9 @@ public class PlayerSwing : MonoBehaviour
         return new float[] {swingPower * Mathf.Cos(Mathf.Deg2Rad * swingAngle), swingPower * Mathf.Sin(Mathf.Deg2Rad * 60)};
     }   
 
-    public void Power(Rigidbody2D ballRb) {
-        ballRb.velocity = Vector2.zero;
-        IPower power = powerGameObject.GetComponent<IPower>();
-        power.SetParent(ballRb.transform);
-        power.StartPower();
+    public void Power(Rigidbody2D ballRb, BallController ballController) {
+        ballController.Power = power;
+        power.InitPower(ballRb, ballController);
     }
 
     public Collider2D CheckBall() {

@@ -7,6 +7,7 @@ public class BallEffect : MonoBehaviour
     [SerializeField] TrailRenderer ballTrail;
     [SerializeField] ParticleSystem normalEffect, smashEffect;
     [SerializeField] Transform effectHolder;
+    [SerializeField] SpriteRenderer shadow;
 
     private void Update() {
         if (normalEffect.isPlaying || smashEffect.isPlaying)
@@ -19,6 +20,7 @@ public class BallEffect : MonoBehaviour
     }
     
     public void PlayEffect(Material material, string tag) {
+        shadow.enabled = true;
         ballTrail.material = material;
         ballTrail.enabled = true;
         switch (tag)
@@ -33,6 +35,8 @@ public class BallEffect : MonoBehaviour
     } 
 
     public void StopEffect() {
+        shadow.enabled = false;
+        ballTrail.enabled = false;
         ballTrail.Clear();
         normalEffect.Stop();
         smashEffect.Stop();

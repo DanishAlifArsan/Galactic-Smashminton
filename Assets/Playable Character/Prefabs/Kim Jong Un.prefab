@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229139951504606678}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.017835889, w: 0.999841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2, y: -2.11, z: 0}
   m_LocalScale: {x: 3.2779489, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8543278053848719546}
   m_Father: {fileID: 7273680771386854347}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.044}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1336176642506788065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -521,6 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a17d6598405b248a1868b420f2e5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerGameObject: {fileID: 0}
+  powerEffect: {fileID: 0}
   shadow: {fileID: 0}
   explosion: {fileID: 8732281238689251792}
   minX: -7
@@ -6087,6 +6089,7 @@ MonoBehaviour:
   swingRange:
   - 1
   - 4.5
+  smashRange: 0.5
   ballLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -6094,7 +6097,7 @@ MonoBehaviour:
   hitTrail: {fileID: 2100000, guid: cb7dde607800da34dae9f41542d947ad, type: 2}
   smashTrail: {fileID: 2100000, guid: ea057b679271b9b4f9407374e9db524e, type: 2}
   hitSound: {fileID: 8300000, guid: 3d333621361c194499421f953168de71, type: 3}
-  powerGameObject: {fileID: 1776967894271497025}
+  power: {fileID: 0}
   smashPoint: {fileID: 1679778521904624901}
   servePoint: {fileID: 1182199808218257379}
 --- !u!1 &4577982982817706206
