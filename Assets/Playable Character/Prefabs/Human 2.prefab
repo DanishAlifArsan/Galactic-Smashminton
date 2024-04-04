@@ -10596,7 +10596,7 @@ MonoBehaviour:
   swingRange:
   - 1
   - 4.5
-  smashRange: 0.5
+  smashRange: 10
   ballLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -10695,6 +10695,11 @@ MonoBehaviour:
   minX: -7
   maxX: -1
   posY: 8
+  explosionRange: 5
+  explosionKnockBack: 200
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &4198446666211953865
 GameObject:
   m_ObjectHideFlags: 0

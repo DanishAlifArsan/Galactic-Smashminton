@@ -7,13 +7,14 @@ public class KimJongUnPower : PowerSystem
     [SerializeField] private SpriteRenderer shadow;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private float minX, maxX, posY;
+    [SerializeField] private float explosionRange;
+    [SerializeField] private float explosionKnockBack;
+    [SerializeField] private LayerMask playerLayer;
     // private Vector2 shadowTemp, explosionTemp;
 
     private void Start() {
         shadow.transform.parent = null;
          shadow.enabled = false;
-        // shadowTemp = shadow.position;
-        // explosionTemp = explosion.transform.position;
     }
 
     public override void StartPower(Rigidbody2D ballRb, BallController ballController) {
@@ -27,40 +28,26 @@ public class KimJongUnPower : PowerSystem
         shadow.transform.position = new Vector2(rand,-2.39f);
     }
 
-    // public void StartPower()
-    // {
-    //     // shadow.position = shadowTemp;
-    //     // explosion.transform.position = explosionTemp;
-
-    //     explosion.transform.parent = transform;
-    //     transform.localPosition = Vector3.zero;
-    //     explosion.transform.localPosition = Vector2.zero;
-    //     float rand = Random.Range(minX,maxX);
-    //     transform.parent.position = new Vector2(rand,posY);
-    //     gameObject.SetActive(true);
-    //     shadow.position = new Vector2(rand,-2.39f);
-    // }
-
-    // public void EndPower()
-    // {
-    //     shadow.parent = transform;
-    //     explosion.transform.parent = null;
-    //     gameObject.SetActive(false);
-    //     explosion.Play();
-    // }
-
-    // private void OnTriggerEnter2D(Collider2D other) {
-    //      if (other.gameObject.CompareTag("PlayerField"))
-    //     {
-    //         EndPower();
-    //         StartCoroutine(PlayParticle());
-    //     }
-    // }
-
     public override void EndPower()
     {
         base.EndPower();
+
         shadow.enabled = false;
+        Collider2D[] player = Physics2D.OverlapCircleAll(shadow.transform.position, explosionRange * transform.lossyScale.y, playerLayer);
+        
+        foreach (var p in player)
+        {
+            Rigidbody2D rb = p.GetComponent<Rigidbody2D>(); 
+            float appliedKnockback;
+            if (rb.transform.position.x > powerGameObject.transform.position.x)
+            {
+                appliedKnockback = explosionKnockBack;
+            } else {
+                appliedKnockback = -explosionKnockBack;
+            }
+            rb.AddForce(new Vector2(appliedKnockback, rb.velocity.y));   
+        }
+        
         StartCoroutine(PlayParticle());
     }
 
@@ -68,5 +55,12 @@ public class KimJongUnPower : PowerSystem
         explosion.Play();
         yield return new WaitWhile(() => explosion.isPlaying);
         explosion.Stop();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw vision range circle in editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(shadow.transform.position, explosionRange * transform.lossyScale.y);
     }
 }
