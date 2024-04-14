@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
         {
-            transform.position = transform.parent.position;
+            transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y + col.bounds.size.y / 2);
             jumpEffect?.Stop();
             //anim.SetTrigger("Serve);
         }

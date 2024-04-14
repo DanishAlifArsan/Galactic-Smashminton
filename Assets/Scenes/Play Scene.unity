@@ -279,8 +279,8 @@ MonoBehaviour:
   - {x: 0.49999997, y: 0.5, z: 0}
   - {x: 0.55625004, y: -0.7877879, z: 0}
   m_ShapePathHash: -1651078019
-  m_Mesh: {fileID: 1085821988}
-  m_InstanceId: 95842
+  m_Mesh: {fileID: 1088692900}
+  m_InstanceId: 33508
   m_LocalBounds:
     m_Center: {x: -0.013934374, y: -0.14389396, z: 0}
     m_Extent: {x: 0.57018447, y: 0.64389396, z: 0}
@@ -1513,7 +1513,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4295,7 +4295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 546880280}
---- !u!43 &1085821988
+--- !u!43 &1088692900
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5476,7 +5476,7 @@ Transform:
   m_GameObject: {fileID: 1333187028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: -1.54, z: 0.93236184}
+  m_LocalPosition: {x: 4, y: -2.9, z: 0.93236184}
   m_LocalScale: {x: -0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5953,7 +5953,7 @@ Transform:
   m_GameObject: {fileID: 1441065760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -1.54, z: 0.93236184}
+  m_LocalPosition: {x: -4, y: -2.9, z: 0.93236184}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

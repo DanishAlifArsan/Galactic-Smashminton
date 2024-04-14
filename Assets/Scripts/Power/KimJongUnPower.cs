@@ -25,7 +25,7 @@ public class KimJongUnPower : PowerSystem
         explosion.transform.localPosition = Vector2.zero;
         float rand = Random.Range(minX,maxX);
         ballRb.transform.position = new Vector2(rand,posY);
-        shadow.transform.position = new Vector2(rand,-2.39f);
+        shadow.transform.position = new Vector2(rand,-2.63f);
     }
 
     public override void EndPower()
