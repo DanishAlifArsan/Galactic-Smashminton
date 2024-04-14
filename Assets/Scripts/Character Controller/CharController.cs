@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharController : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class CharController : MonoBehaviour
     [HideInInspector] public Transform servePoint;
     [HideInInspector] public bool isJump;
     [HideInInspector] public float[,] swingPowers;
+    [SerializeField] private Image portrait;
 
     protected void InitCharacter(PlayableCharacter character) {
         obj = Instantiate(character.prefab, transform).transform.GetChild(0).gameObject;
         movement = obj.GetComponent<PlayerMovement>();
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
+        portrait.sprite = character.portrait;
+        swing.characterPortrait = portrait.gameObject;
 
         PopulateArray(character);
     }

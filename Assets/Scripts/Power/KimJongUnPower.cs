@@ -14,11 +14,11 @@ public class KimJongUnPower : PowerSystem
 
     private void Start() {
         shadow.transform.parent = null;
-         shadow.enabled = false;
+        shadow.enabled = false;
     }
 
-    public override void StartPower(Rigidbody2D ballRb, BallController ballController) {
-        base.StartPower(ballRb, ballController);
+    public override void StartPower(Rigidbody2D ballRb, BallController ballController, GameObject characterPortrait) {
+        base.StartPower(ballRb, ballController, characterPortrait);
 
         shadow.enabled = true;
         powerGameObject.transform.localPosition = Vector3.zero;

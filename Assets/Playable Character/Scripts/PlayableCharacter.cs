@@ -15,4 +15,5 @@ public class PlayableCharacter : ScriptableObject
     public float smashAngle;
     public float servicePower;
     public float serviceAngle;
+    public Sprite portrait;
 }

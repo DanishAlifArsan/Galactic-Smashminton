@@ -13,6 +13,7 @@ public class PlayerSwing : MonoBehaviour
     [SerializeField] private PowerSystem power;
     public Transform smashPoint;
     public Transform servePoint;
+    public GameObject characterPortrait;
     private Animator anim;
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -103,7 +104,7 @@ public class PlayerSwing : MonoBehaviour
 
     public void Power(Rigidbody2D ballRb, BallController ballController) {
         ballController.Power = power;
-        power.InitPower(ballRb, ballController);
+        power.InitPower(ballRb, ballController, characterPortrait);
     }
 
     public Collider2D CheckBall() {
