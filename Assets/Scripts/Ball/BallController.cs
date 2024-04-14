@@ -9,6 +9,7 @@ public class BallController : MonoBehaviour
     public class OnCollideFieldArgs : EventArgs {
         public string tag;
     }
+    public event Func<Transform> BallPosition;
     private bool isSmash;
     public bool IsSmash { get {return isSmash;} set{isSmash = value;} }
 
@@ -16,10 +17,6 @@ public class BallController : MonoBehaviour
     public PowerSystem Power { get {return power;} set{power = value;} }
     
     private BallEffect effect;
-    [SerializeField] PlayerController player;
-    [SerializeField] EnemyAI enemy;
-
-    private Transform playerServePoint, enemyServePoint, currentServePoint;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -27,9 +24,6 @@ public class BallController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         effect = GetComponent<BallEffect>();
-        playerServePoint = player.servePoint;
-        enemyServePoint = enemy.servePoint;
-        currentServePoint = playerServePoint;
     }
 
     private void Update() {
@@ -41,7 +35,7 @@ public class BallController : MonoBehaviour
             rb.velocity = Vector2.zero;
             if (GameManager.instance.currentGamePhase == GamePhase.Serve )
             {
-                ResetPosition(currentServePoint);
+                ResetPosition(BallPosition?.Invoke());
             }
         }
     }
@@ -50,12 +44,10 @@ public class BallController : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerField"))
         {
             OnCollideField?.Invoke(this, new OnCollideFieldArgs() {tag = "player"});
-            currentServePoint = enemyServePoint;
         }
         if (other.gameObject.CompareTag("EnemyField"))
         {
             OnCollideField?.Invoke(this, new OnCollideFieldArgs() {tag = "enemy"});
-            currentServePoint = playerServePoint;
         }
     }
 
