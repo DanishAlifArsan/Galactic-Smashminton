@@ -1,22 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FadeScreen : MonoBehaviour
 {
-    public int scene;
+    [SerializeField] private Button[] buttons;
+    [SerializeField] private UIManager uIManager;
+    Animator fadeAnim;
+    int scene;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void Start() {
+        fadeAnim = GetComponent<Animator>(); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void InteractButton(int status) {
+        bool btnStatus = Convert.ToBoolean(status);
+        foreach (var item in buttons)
+        {
+            item.interactable = btnStatus;
+        }
+        uIManager.canEsc = btnStatus;
+    }
+
+    public void Fade(int scene) {
+        fadeAnim.SetTrigger("Fade");
+        this.scene = scene;
     }
 
     public void SwitchScene() {

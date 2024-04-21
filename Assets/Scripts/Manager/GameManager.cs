@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject battleStartUI;
+    [SerializeField] private GameObject timeline;
     [SerializeField] private AudioClip crowdSound;
     [SerializeField] private AudioClip refreeSound;
     public static GameManager instance;
@@ -18,14 +20,10 @@ public class GameManager : MonoBehaviour
 
     public GamePhase currentGamePhase;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        RoundStart();
-    }
-
     public void RoundStart() {
         currentGamePhase = GamePhase.Serve;
+        battleStartUI.SetActive(false);
+        timeline.SetActive(false);
         AudioManager.instance.PlaySound(refreeSound);
     }
 
@@ -33,12 +31,16 @@ public class GameManager : MonoBehaviour
         currentGamePhase = GamePhase.Score;
         AudioManager.instance.PlaySound(crowdSound);
     }
+
+    public bool IsPlayPhase() {
+        return currentGamePhase == GamePhase.Play || currentGamePhase == GamePhase.Score;
+    }
 }
 
 public enum GamePhase
 {
     Serve,
     Play,
-    End,
-    Score
+    Score,
+    End
 }

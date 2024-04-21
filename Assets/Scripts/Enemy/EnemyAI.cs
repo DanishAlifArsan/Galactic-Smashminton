@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyAI : CharController
 {
     public StateManager stateManager;
     public PlayableCharacter enemy;
     [SerializeField] private float enemySight;
+    [SerializeField] private Image powerPortrait;
+    
     public float enemyJumpSight;
     public Transform ball;
     public Transform swingTarget;
@@ -16,6 +19,8 @@ public class EnemyAI : CharController
     {
         enemy = CharacterSelect.instance.selectedCharacter;
         InitCharacter(enemy);
+        powerPortrait.sprite = enemy.portrait;
+        swing.characterPortrait = powerPortrait.gameObject;
 
         stateManager = new StateManager();
         stateManager.StartState(this);

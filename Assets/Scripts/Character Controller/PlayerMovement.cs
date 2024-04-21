@@ -43,19 +43,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(float speed, float _direction) {
-        if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
+        if (!GameManager.instance.IsPlayPhase())
         {
             return;
         }
 
         rb.velocity = new Vector2(speed * _direction, rb.velocity.y);
         if (isGrounded()) {
-            AudioManager.instance.PlaySound(walkSound);
+            // AudioManager.instance.PlaySound(walkSound);
         }
     }
 
     public void Jump(float jumpForce) {
-        if (GameManager.instance.currentGamePhase == GamePhase.Serve || GameManager.instance.currentGamePhase == GamePhase.End)
+        if (!GameManager.instance.IsPlayPhase())
         {
             return;
         }

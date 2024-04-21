@@ -19,7 +19,6 @@ public class CharController : MonoBehaviour
         swing = obj.GetComponent<PlayerSwing>();
         servePoint = swing.servePoint;
         portrait.sprite = character.portrait;
-        swing.characterPortrait = portrait.gameObject;
 
         PopulateArray(character);
     }

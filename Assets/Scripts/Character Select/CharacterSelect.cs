@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CharacterSelect : MonoBehaviour
 {
     [SerializeField] private PlayableCharacter[] characters;
-    [SerializeField] private UIManager uIManager;
+    [SerializeField] private FadeScreen fadeScreen;
     public PlayableCharacter selectedCharacter {get; private set;}
     public static CharacterSelect instance;
 
@@ -26,6 +26,6 @@ public class CharacterSelect : MonoBehaviour
 
     public void SelectCharacter(int characterIndex) {
         selectedCharacter = characters[characterIndex];
-        uIManager.SwitchScene(2);
+        fadeScreen.Fade(2);
     }
 }

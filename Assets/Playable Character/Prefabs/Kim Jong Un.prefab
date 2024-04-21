@@ -5044,6 +5044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerGameObject: {fileID: 6187826484424804503}
+  caster: {fileID: 59605403312365708}
   powerEffect: {fileID: 4950476380369167816}
   shadow: {fileID: 5254787192173156105}
   explosion: {fileID: 3772281462185204230}

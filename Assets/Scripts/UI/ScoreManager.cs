@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
     private Transform playerServePoint, enemyServePoint, currentServePoint;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ball.OnCollideField += Score;
         ball.BallPosition += GetServePoint;

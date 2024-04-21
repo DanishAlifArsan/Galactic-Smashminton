@@ -1,51 +1,21 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject fadeScreen;
-    [SerializeField] private Button[] buttons;
-    private bool canEsc;
-    Animator fadeAnim;
-    FadeScreen fadeScene;
+    public bool canEsc;
     public Action OnEscPressed;
-
-    private void Start() {
-        fadeAnim = fadeScreen.GetComponent<Animator>(); 
-        fadeScene = fadeScreen.GetComponent<FadeScreen>();
-    }
 
     private void Update() {
         if (Input.GetKey(KeyCode.Escape) && canEsc)
         {
             OnEscPressed?.Invoke();
         }
-
-        if (!fadeScene.enabled)
-        {
-            InteractButton(true);
-        } else {
-            InteractButton(false);
-        }
     }
 
-    public void SwitchScene(int scene) 
-    {  
-        fadeScene.scene = scene;
-        fadeAnim.SetTrigger("Fade");
-    }
-
-    public void InteractButton(bool status) {
-        foreach (var item in buttons)
-        {
-            item.interactable = status;
-        }
-        canEsc = status;
+    public void SwitchScene(int scene) {
+        SceneManager.LoadScene(scene);
     }
 }
