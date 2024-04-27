@@ -81,9 +81,18 @@ public class ScoreManager : MonoBehaviour
         gameoverScreen.SetActive(true);
         if (playerScore > enemyScore)
         {
-            gameoverText.sprite = winText; 
+            gameoverText.sprite = winText;
+            SaveGame();
         } else {
             gameoverText.sprite = loseText;
+        }
+    }
+
+    private void SaveGame() {
+        SaveModel saveData = SaveSystem.LoadGame();
+        if (saveData.defeatedEnemies < enemy.enemy.number)
+        {
+            SaveSystem.SaveGame(enemy.enemy.number); 
         }
     }
 }

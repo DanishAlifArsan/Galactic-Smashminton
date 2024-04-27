@@ -22,4 +22,5 @@ MonoBehaviour:
   smashAngle: 0
   servicePower: 10
   serviceAngle: 60
+  number: 2
   portrait: {fileID: 21300000, guid: 4613a8b064b518145bd99d245b21f8fa, type: 3}

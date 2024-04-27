@@ -5611,6 +5611,7 @@ MonoBehaviour:
   power: {fileID: 0}
   smashPoint: {fileID: 4487450350447262563}
   servePoint: {fileID: 3116061534496708627}
+  characterPortrait: {fileID: 0}
 --- !u!1 &3779077806591381763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,7 +6187,7 @@ Transform:
   m_Children:
   - {fileID: 5083118471638821510}
   m_Father: {fileID: 1342655263362787682}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -29.309}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30.047}
 --- !u!1 &8914400867585523153
 GameObject:
   m_ObjectHideFlags: 0
