@@ -15,8 +15,10 @@ public class PlayerSwing : MonoBehaviour
     public Transform servePoint;
     public GameObject characterPortrait;
     private Animator anim;
+    private Rigidbody2D rb;
     private void Awake() {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Swing(float[,] swingPowers, Vector2 targetPosition, bool isJump) {
@@ -103,6 +105,7 @@ public class PlayerSwing : MonoBehaviour
     }   
 
     public void Power(Rigidbody2D ballRb, BallController ballController) {
+        rb.velocity = Vector2.zero;
         ballController.Power = power;
         power.InitPower(ballRb, ballController, characterPortrait);
     }

@@ -5044,7 +5044,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerGameObject: {fileID: 6187826484424804503}
-  caster: {fileID: 59605403312365708}
   powerEffect: {fileID: 4950476380369167816}
   shadow: {fileID: 5254787192173156105}
   explosion: {fileID: 3772281462185204230}
@@ -10242,7 +10241,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4745098}
+  m_Color: {r: 1, g: 0.14228013, b: 0.031372547, a: 0.4745098}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -21065,7 +21064,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 0
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2

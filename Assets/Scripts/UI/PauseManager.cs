@@ -14,11 +14,13 @@ public class PauseManager : MonoBehaviour
     }
 
     public void PauseGame() {
+        GameManager.instance.isPaused = true;
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void Continue() {
+        GameManager.instance.isPaused = false;
         pauseScreen.SetActive(false);
         Time.timeScale = 1;
     }

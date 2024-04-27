@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject timeline;
     [SerializeField] private AudioClip crowdSound;
     [SerializeField] private AudioClip refreeSound;
-    public GameObject indicator;
 
     public static GameManager instance;
 
@@ -21,6 +20,8 @@ public class GameManager : MonoBehaviour
     }
 
     public GamePhase currentGamePhase;
+    public GameObject indicator;
+    public bool isPaused;
 
     public void RoundStart() {
         indicator.SetActive(true);

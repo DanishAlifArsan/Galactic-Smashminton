@@ -26,9 +26,20 @@ public abstract class PowerSystem : MonoBehaviour
     }
 
     public virtual void StartPower(Rigidbody2D ballRb, BallController ballController, GameObject characterPortrait) {
+        StartCoroutine(PlayEffect(ballRb, ballController, characterPortrait));
+    }
+
+    private IEnumerator PlayEffect(Rigidbody2D ballRb, BallController ballController, GameObject characterPortrait) {
         characterPortrait.SetActive(true);
-        powerEffect.Play();
         ballController.HitEffect(null, null, false);
+        Time.timeScale = 0;
+        powerEffect.Play();
+        yield return new WaitWhile(()=> powerEffect.isPlaying);
+        powerEffect.Stop();
+        if (!GameManager.instance.isPaused)
+        {
+            Time.timeScale = 1;    
+        }
         ballRb.velocity = Vector2.zero;
         powerGameObject.SetActive(true);
     }
