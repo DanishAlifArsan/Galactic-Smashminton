@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject timeline;
     [SerializeField] private AudioClip crowdSound;
     [SerializeField] private AudioClip refreeSound;
+    public GameObject indicator;
+
     public static GameManager instance;
 
     private void Awake()
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GamePhase currentGamePhase;
 
     public void RoundStart() {
+        indicator.SetActive(true);
         currentGamePhase = GamePhase.Serve;
         battleStartUI.SetActive(false);
         timeline.SetActive(false);

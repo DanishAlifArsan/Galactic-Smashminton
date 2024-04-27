@@ -24,13 +24,14 @@ public class ScoreManager : MonoBehaviour
     private Transform playerServePoint, enemyServePoint, currentServePoint;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         ball.OnCollideField += Score;
         ball.BallPosition += GetServePoint;
         playerServePoint = player.servePoint;
         enemyServePoint = enemy.servePoint;
         currentServePoint = playerServePoint;
+        GameManager.instance.indicator = indicator.gameObject;
         SetIndicator(player);
     }
 
@@ -62,8 +63,8 @@ public class ScoreManager : MonoBehaviour
             GameManager.instance.currentGamePhase = GamePhase.End;
             GameOver();
         } else {
-            SetIndicator(character);
             GameManager.instance.RoundStart();
+            SetIndicator(character);
         }
     }
 
@@ -72,7 +73,6 @@ public class ScoreManager : MonoBehaviour
     }
 
     private void SetIndicator(CharController character) {
-        indicator.gameObject.SetActive(true);
         indicator.parent = character.obj.transform;
         indicator.position = character.swing.smashPoint.position;
     }
