@@ -26,6 +26,6 @@ public class CharacterSelect : MonoBehaviour
 
     public void SelectCharacter(int characterIndex) {
         selectedCharacter = characters[characterIndex];
-        fadeScreen.Fade(2);
+        fadeScreen.Fade(3);
     }
 }

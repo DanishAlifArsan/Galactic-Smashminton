@@ -30,6 +30,6 @@ public class CardMove : MonoBehaviour
     }
 
     private void ReturnToPrevious() {
-        uIManager.SwitchScene(0);
+        uIManager.SwitchScene(1);
     }
 }
